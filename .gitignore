@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+build/
+
+# Environment & secrets
+.env
+*.db
+*.sqlite3
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+EOF
