@@ -1,14 +1,16 @@
+import datetime
 import enum
 import uuid
-import datetime
-from sqlalchemy import Column, String, DateTime, Enum, Boolean
+
+from sqlalchemy import Boolean, Column, DateTime, Enum, String
+
 from app.database import Base
+
 
 class RoleEnum(str, enum.Enum):
     admin = "admin"
     provider = "provider"
     trader = "trader"
-
 class User(Base):
     __tablename__ = "users"
 
