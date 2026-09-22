@@ -1,7 +1,8 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, WebSocket, WebSocketDisconnect
 from sqlalchemy.orm import Session
 
 from app.core.deps import require_role
+from app.core.websocket_manager import capacity_manager
 from app.database import get_db
 from app.models.container import Container
 from app.models.provider import Provider, ProviderStatus
@@ -88,3 +89,17 @@ def delete_container(
     db.delete(container)
     db.commit()
     return {"message": f"Container {container_id} deleted successfully"}
+
+@router.websocket("/ws/{container_id}")
+async def container_capacity_ws(websocket: WebSocket, container_id: str):
+    """
+    Clients (marketplace UI viewers) connect here to receive live
+    available_space_cbm updates for a specific container.
+    """
+    await capacity_manager.connect(container_id, websocket)
+    try:
+        while True:
+            # Keep-alive: client can send pings; we just discard them
+            await websocket.receive_text()
+    except WebSocketDisconnect:
+        capacity_manager.disconnect(container_id, websocket)

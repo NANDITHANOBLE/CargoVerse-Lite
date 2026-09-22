@@ -1,5 +1,5 @@
 
-import datetime
+import datetime  # noqa: I001
 
 from pydantic import BaseModel
 
