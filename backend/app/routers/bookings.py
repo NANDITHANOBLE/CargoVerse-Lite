@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.core.deps import require_role
+from app.core.websocket_manager import capacity_manager
 from app.database import get_db
 from app.models.booking import Booking, BookingStatus
 from app.models.container import Container
@@ -32,7 +33,6 @@ def get_price_quote(
     volume_cbm: float,
     db: Session = Depends(get_db),
 ):
-    """Preview pricing before confirming a booking."""
     container = db.query(Container).filter(Container.id == container_id).first()
     if not container:
         raise HTTPException(404, "Container not found")
@@ -42,7 +42,7 @@ def get_price_quote(
     return calculate_price(volume_cbm, container.price_per_cbm)
 
 @router.post("/", response_model=BookingOut)
-def create_booking(
+async def create_booking(
     payload: BookingCreate,
     user=Depends(require_role("trader")),
     db: Session = Depends(get_db),
@@ -74,8 +74,17 @@ def create_booking(
     db.add(booking)
     db.commit()
     db.refresh(booking)
+    db.refresh(container)
 
-    # NOTE: In Step 11 we'll broadcast this capacity change via WebSocket in real time.
+    # Real-time broadcast: notify any connected WebSocket clients watching this container
+    await capacity_manager.broadcast(
+        container.id,
+        {
+            "type": "capacity_update",
+            "container_id": container.id,
+            "available_space_cbm": container.available_space_cbm,
+        },
+    )
 
     return booking
 
