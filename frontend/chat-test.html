@@ -1,0 +1,25 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>CargoVerse Chat Test</title>
+  <link rel="stylesheet" href="css/chat-test.css">
+</head>
+<body>
+  <h1>Real-Time Chat Test</h1>
+
+  <div class="setup-row">
+    <input id="myUserId" placeholder="Your User ID">
+    <input id="otherUserId" placeholder="Other User's ID">
+    <button onclick="connect()">Connect</button>
+  </div>
+
+  <div id="chatWindow"></div>
+  <div id="typingIndicator" class="typing-indicator"></div>
+
+  <div class="message-input-row">
+    <input id="messageInput" placeholder="Type a message..." oninput="notifyTyping()" onkeydown="if(event.key==='Enter') sendMessage()">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  
+
+</body></html>
