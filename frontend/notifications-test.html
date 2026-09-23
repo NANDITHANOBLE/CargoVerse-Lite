@@ -1,0 +1,28 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>CargoVerse Notification Center Test</title>
+  <link rel="stylesheet" href="css/notifications-test.css">
+</head>
+<body>
+  <h1>Notification Center Test</h1>
+
+  <div class="setup-row">
+    <input id="token" placeholder="Access Token">
+    <input id="userId" placeholder="Your User ID (for live updates)">
+    <button onclick="loadNotifications()">Load Notifications</button>
+    <button onclick="connectLive()">Connect Live</button>
+  </div>
+
+  <div class="bell-row">
+    <div class="bell">
+      🔔
+      <span id="badge" class="badge" style="display:none;">0</span>
+    </div>
+    <span>Click a notification to mark it as read</span>
+  </div>
+
+  <div id="notificationList" class="notification-list"></div>
+
+  
+
+</body></html>

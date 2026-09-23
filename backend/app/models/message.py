@@ -1,4 +1,4 @@
-import datetime
+import datetime  # noqa: I001
 import uuid
 
 from sqlalchemy import Boolean, Column, DateTime, String, Text
