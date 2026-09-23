@@ -10,6 +10,7 @@ from app.models import payment as payment_model  # noqa: F401
 from app.models import provider as provider_model  # noqa: F401
 from app.models import user as user_model  # noqa: F401
 from app.routers import (
+    analytics,
     auth,
     bookings,
     chat,
@@ -42,6 +43,7 @@ app.include_router(payments.router)
 app.include_router(chat.router)
 app.include_router(tracking.router)
 app.include_router(notifications.router)
+app.include_router(analytics.router)
 
 @app.get("/health")
 def health():
