@@ -1,0 +1,35 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>CargoVerse Shipment Tracking Test</title>
+  <link rel="stylesheet" href="css/tracking-test.css">
+</head>
+<body>
+  <h1>Shipment Tracking Test</h1>
+
+  <div class="setup-row">
+    <input id="bookingId" placeholder="Booking ID">
+    <input id="token" placeholder="Access Token (provider/admin to advance)" style="width: 400px;">
+    <button onclick="fetchStatus()">Refresh Status</button>
+    <button onclick="advanceStatus()">Advance Status</button>
+  </div>
+
+  <div class="progress-container">
+    <div class="progress-bar-track">
+      <div id="progressFill" class="progress-bar-fill"></div>
+    </div>
+    <div id="statusLabel" class="status-label">Status: -</div>
+
+    <div class="steps-row">
+      <div class="step" data-step="booked">Booked</div>
+      <div class="step" data-step="confirmed">Confirmed</div>
+      <div class="step" data-step="in_transit">In Transit</div>
+      <div class="step" data-step="arrived">Arrived</div>
+      <div class="step" data-step="delivered">Delivered</div>
+    </div>
+  </div>
+
+  <div id="log"></div>
+
+  
+
+</body></html>
