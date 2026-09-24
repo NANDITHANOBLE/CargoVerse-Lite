@@ -3,12 +3,14 @@ from sqlalchemy.orm import Session
 
 from app.core.deps import require_role
 from app.database import get_db
+from app.ml.pricing_model import predictor
 from app.ml.recommendation_engine import recommend_best
 from app.models.container import Container
 from app.models.provider import Provider
 from app.schemas.ai_schema import RecommendationRequest, RecommendationResponse
+from app.schemas.pricing_schema import PricingForecastRequest, PricingForecastResponse
 
-router = APIRouter(prefix="/ai", tags=["AI - Recommendation Engine"])
+router = APIRouter(prefix="/ai", tags=["AI Modules"])
 
 @router.post("/recommend", response_model=RecommendationResponse)
 def recommend_container(
@@ -34,11 +36,6 @@ def recommend_for_route(
     user=Depends(require_role("trader")),
     db: Session = Depends(get_db),
 ):
-    """
-    Convenience endpoint: automatically pulls all approved-provider containers
-    matching the given route and runs the recommendation engine on them,
-    without requiring the client to manually assemble the candidates list.
-    """
     rows = (
         db.query(Container, Provider)
         .join(Provider, Container.provider_id == Provider.id)
@@ -66,4 +63,12 @@ def recommend_for_route(
         raise HTTPException(400, "current_choice_id not found among containers on this route")
 
     result = recommend_best(candidates_dicts, current_choice_id)
+    return result
+
+@router.post("/pricing-forecast", response_model=PricingForecastResponse)
+def pricing_forecast(
+    payload: PricingForecastRequest,
+    user=Depends(require_role("trader")),
+):
+    result = predictor.predict(payload.dict())
     return result

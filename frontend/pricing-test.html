@@ -1,0 +1,46 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>CargoVerse Dynamic Pricing Forecast Test</title>
+  <link rel="stylesheet" href="css/pricing-test.css">
+</head>
+<body>
+  <h1>Dynamic Pricing Prediction Test</h1>
+
+  <div class="setup-row">
+    <label>Access Token</label><br>
+    <input id="token" style="width: 500px;" placeholder="Trader Access Token">
+  </div>
+
+  <div class="setup-row">
+    <label>Demand Index (0-100)</label><br>
+    <input id="demandIndex" type="number" value="75">
+  </div>
+
+  <div class="setup-row">
+    <label>Season Factor (0-1)</label><br>
+    <input id="seasonFactor" type="number" step="0.1" value="0.8">
+  </div>
+
+  <div class="setup-row">
+    <label>Distance (km)</label><br>
+    <input id="distanceKm" type="number" value="3000">
+  </div>
+
+  <div class="setup-row">
+    <label>Days to Departure</label><br>
+    <input id="daysToDeparture" type="number" value="5">
+  </div>
+
+  <button onclick="getForecast()">Get Pricing Forecast</button>
+
+  <div id="resultCard" class="result-card">
+    <div id="trendBadge" class="trend-badge"></div>
+    <div id="recommendationText" class="recommendation-text"></div>
+    <div id="confidenceText" class="confidence-text"></div>
+  </div>
+
+  <div id="log"></div>
+
+  
+
+</body></html>
