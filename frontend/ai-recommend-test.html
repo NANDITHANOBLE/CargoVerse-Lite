@@ -1,0 +1,75 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>CargoVerse AI Recommendation Test</title>
+  <link rel="stylesheet" href="css/ai-recommend-test.css">
+</head>
+<body>
+  <h1>AI Container Recommendation Engine Test</h1>
+
+  <div class="setup-row">
+    <input id="token" placeholder="Trader Access Token" style="width: 500px;">
+  </div>
+
+  <div class="candidates-box">
+    <p>Candidate 1 (your current choice):</p>
+    <div class="candidate-row">
+      <input class="c-id" placeholder="Container ID" value="CNT001">
+      <input class="c-price" placeholder="Price/CBM" value="6500">
+      <input class="c-days" placeholder="Transit Days" value="5">
+      <input class="c-trust" placeholder="Trust Score (0-10)" value="7">
+      <input class="c-space" placeholder="Available CBM" value="10">
+    </div>
+
+    <p>Candidate 2:</p>
+    <div class="candidate-row">
+      <input class="c-id" placeholder="Container ID" value="CNT002">
+      <input class="c-price" placeholder="Price/CBM" value="5800">
+      <input class="c-days" placeholder="Transit Days" value="3">
+      <input class="c-trust" placeholder="Trust Score (0-10)" value="8.5">
+      <input class="c-space" placeholder="Available CBM" value="15">
+    </div>
+
+    <p>Candidate 3:</p>
+    <div class="candidate-row">
+      <input class="c-id" placeholder="Container ID" value="CNT003">
+      <input class="c-price" placeholder="Price/CBM" value="7200">
+      <input class="c-days" placeholder="Transit Days" value="6">
+      <input class="c-trust" placeholder="Trust Score (0-10)" value="6">
+      <input class="c-space" placeholder="Available CBM" value="8">
+    </div>
+  </div>
+
+  <div class="setup-row">
+    <input id="currentChoiceId" placeholder="Current Choice Container ID" value="CNT001">
+    <button onclick="getRecommendation()">Get AI Recommendation</button>
+  </div>
+
+  <div id="resultCard" class="result-card" style="display:none;">
+    <div class="result-title">AI Recommendation Result</div>
+    <div class="result-row">
+      <span class="result-label">Best Container</span>
+      <span class="result-value" id="bestId"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-label">Value Score</span>
+      <span class="result-value" id="valueScore"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-label">Potential Savings (per CBM)</span>
+      <span class="result-value" id="savings"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-label">Faster By</span>
+      <span class="result-value" id="fasterBy"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-label">Is Current Choice Already Best?</span>
+      <span class="result-value" id="alreadyBest"></span>
+    </div>
+  </div>
+
+  <div id="log"></div>
+
+  
+
+</body></html>
