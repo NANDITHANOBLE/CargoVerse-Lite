@@ -1,0 +1,98 @@
+body {
+  font-family: "Courier New", monospace;
+  background-color: #0A0A0F;
+  color: #00D9FF;
+  padding: 40px;
+}
+
+h1 {
+  color: #B026FF;
+  text-shadow: 0 0 8px #B026FF;
+}
+
+.setup-row {
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 8px 12px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  background: #12121A;
+  color: #00D9FF;
+  border: 1px solid #00D9FF;
+  border-radius: 6px;
+  width: 400px;
+}
+
+button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background: linear-gradient(135deg, #00D9FF, #B026FF);
+  color: #0A0A0F;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  box-shadow: 0 0 12px #0FF0FC;
+}
+
+.candidates-box {
+  background: #12121A;
+  border: 1px solid #00D9FF;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.candidate-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.candidate-row input {
+  width: 130px;
+  margin: 0;
+}
+
+.result-card {
+  background: #12121A;
+  border: 1px solid #B026FF;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 0 20px rgba(176, 38, 255, 0.4);
+}
+
+.result-title {
+  font-size: 20px;
+  color: #0FF0FC;
+  margin-bottom: 15px;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+}
+
+.result-label {
+  color: #888;
+}
+
+.result-value {
+  font-weight: bold;
+  color: #0FF0FC;
+}
+
+#log {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #888;
+}
