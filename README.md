@@ -8,11 +8,11 @@
 
 A real-time logistics marketplace that enables SMEs and exporters to book only the cargo capacity they need while allowing logistics providers to monetize unused transportation space.
 
-![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?he-badge&logo=fastapi
-![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-theo=python
-![WebSockets](https://img.shields.io/badgeal_Time-purple?style=for-the-badge
-![AI Powered](https://img.shields.io/badge/nge?style=for-the-badge
-![SQLite](https://img.shields.io/badge/Databaseeen?style=for-the-badge
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?he-badge&logo=fastapi)
+![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-theo=python)
+![WebSockets](https://img.shields.io/badgeal_Time-purple?style=for-the-badge)
+![AI Powered](https://img.shields.io/badge/nge?style=for-the-badge)
+![SQLite](https://img.shields.io/badge/Databaseeen?style=for-the-badge)
 
 </div>
 
