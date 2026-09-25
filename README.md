@@ -8,12 +8,6 @@
 
 A real-time logistics marketplace that enables SMEs and exporters to book only the cargo capacity they need while allowing logistics providers to monetize unused transportation space.
 
-![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?he-badge&logo=fastapi)
-![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-theo=python)
-![WebSockets](https://img.shields.io/badgeal_Time-purple?style=for-the-badge)
-![AI Powered](https://img.shields.io/badge/nge?style=for-the-badge)
-![SQLite](https://img.shields.io/badge/Databaseeen?style=for-the-badge)
-
 </div>
 
 ---
@@ -517,30 +511,6 @@ http://127.0.0.1:8000/docs
 - Fraud Detection
 - LLM-Powered Logistics Assistant
 - Mobile Application
-
----
-
-# 👩‍💻 Author
-
-## Nanditha Noble
-
-Associate Engineer - Technology
-
-- Artificial Intelligence
-- Machine Learning
-- Data Science
-- Generative AI
-- Backend Engineering
-
-### GitHub
-
-👉 https://github.com/NANDITHANOBLE
-
----
-
-# ⭐ Support
-
-If you found this project useful, consider giving it a ⭐ on GitHub.
 
 ---
 
