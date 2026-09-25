@@ -10,6 +10,7 @@ from app.core.websocket_manager import chat_manager
 from app.database import SessionLocal
 from app.models.notification import Notification
 
+
 async def send_notification(user_id: str, message: str, channel: str = "in_app") -> dict:
     db: Session = SessionLocal()
     try:

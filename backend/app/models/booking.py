@@ -6,6 +6,7 @@ from sqlalchemy import Column, DateTime, Enum, Float, ForeignKey, String
 
 from app.database import Base
 
+
 class BookingStatus(str, enum.Enum):
     booked = "booked"
     confirmed = "confirmed"

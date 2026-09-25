@@ -8,7 +8,11 @@ from app.models.booking import Booking, BookingStatus
 from app.models.container import Container
 from app.models.payment import Payment, PaymentStatus
 from app.models.provider import Provider, ProviderStatus
-from app.schemas.analytics_schema import AdminAnalytics, ProviderAnalytics, TraderAnalytics
+from app.schemas.analytics_schema import (
+    AdminAnalytics,
+    ProviderAnalytics,
+    TraderAnalytics,
+)
 
 router = APIRouter(prefix="/analytics", tags=["Analytics Dashboard"])
 

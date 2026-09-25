@@ -29,7 +29,7 @@ class DynamicPricingPredictor:
         if self.is_trained:
             X = pd.DataFrame([features])[FEATURES]
             pred = self.model.predict(X)[0]
-            proba = dict(zip(self.model.classes_, self.model.predict_proba(X)[0]))
+            proba = dict(zip(self.model.classes_, self.model.predict_proba(X)[0], strict=True))
             confidence = round(float(max(proba.values())), 2)
         else:
             pred, confidence = heuristic_predict(features)

@@ -1,8 +1,11 @@
 import datetime
 import enum
 import uuid
+
 from sqlalchemy import Column, DateTime, Enum, Float, ForeignKey, String
+
 from app.database import Base
+
 
 class PaymentStatus(str, enum.Enum):
     pending = "pending"
