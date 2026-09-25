@@ -1,11 +1,15 @@
 import datetime
+import os
 
+from dotenv import load_dotenv
 from jose import jwt
 from passlib.context import CryptContext
 
-SECRET_KEY = "CHANGE_ME_IN_PRODUCTION_USE_ENV_VAR"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
+load_dotenv()
+
+SECRET_KEY = os.getenv("SECRET_KEY", "fallback-dev-secret-key-do-not-use-in-production")
+ALGORITHM = os.getenv("ALGORITHM", "HS256")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "1440"))
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

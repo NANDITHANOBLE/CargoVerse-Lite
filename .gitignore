@@ -23,3 +23,5 @@ build/
 EOF
 *.db
 *.sqlite3
+
+.env
