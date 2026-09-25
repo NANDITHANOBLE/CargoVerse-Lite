@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 class ContainerCandidate(BaseModel):
     container_id: str
     price_per_cbm: float

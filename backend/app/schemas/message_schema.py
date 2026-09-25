@@ -2,6 +2,7 @@ import datetime
 
 from pydantic import BaseModel
 
+
 class MessageOut(BaseModel):
     id: str
     sender_id: str

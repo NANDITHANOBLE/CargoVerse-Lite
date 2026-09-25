@@ -2,6 +2,7 @@ import datetime
 
 from pydantic import BaseModel, Field
 
+
 class BookingCreate(BaseModel):
     container_id: str
     volume_cbm: float = Field(gt=0)

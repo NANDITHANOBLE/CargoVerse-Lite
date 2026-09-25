@@ -1,5 +1,6 @@
 from pydantic import BaseModel, EmailStr
 
+
 class TraderRegister(BaseModel):
     name: str
     company_name: str
