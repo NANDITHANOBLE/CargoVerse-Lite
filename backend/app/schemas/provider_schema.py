@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
 
+
 class ProviderCreate(BaseModel):
     company_name: str
     gst_number: str

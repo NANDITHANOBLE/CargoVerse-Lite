@@ -2,6 +2,7 @@ import datetime
 
 from pydantic import BaseModel
 
+
 class NotificationOut(BaseModel):
     id: str
     user_id: str

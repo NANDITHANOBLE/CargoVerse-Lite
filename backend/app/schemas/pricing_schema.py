@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
 
+
 class PricingForecastRequest(BaseModel):
     demand_index: float = Field(ge=0, le=100, description="0 = very low demand, 100 = extremely high demand")
     season_factor: float = Field(ge=0, le=1, description="0 = off-season, 1 = peak season")

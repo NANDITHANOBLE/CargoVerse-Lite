@@ -6,6 +6,7 @@ from sqlalchemy import Column, DateTime, Enum, Float, ForeignKey, String
 from app.database import Base
 from app.models.provider import TransportMode
 
+
 def generate_container_id() -> str:
     return "CNT" + str(uuid.uuid4())[:6].upper()
 

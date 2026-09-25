@@ -6,6 +6,7 @@ from sqlalchemy import Boolean, Column, DateTime, Enum, String
 
 from app.database import Base
 
+
 class NotificationChannel(str, enum.Enum):
     in_app = "in_app"
     email = "email"

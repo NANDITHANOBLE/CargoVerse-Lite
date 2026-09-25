@@ -2,6 +2,7 @@ from collections import defaultdict
 
 from fastapi import WebSocket
 
+
 class CapacityConnectionManager:
     """
     Manages WebSocket connections grouped by container_id.

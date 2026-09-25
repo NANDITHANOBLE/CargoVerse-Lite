@@ -6,6 +6,7 @@ from sqlalchemy import JSON, Column, DateTime, Enum, Float, ForeignKey, Integer,
 
 from app.database import Base
 
+
 class ProviderStatus(str, enum.Enum):
     pending = "pending"
     inspection_scheduled = "inspection_scheduled"

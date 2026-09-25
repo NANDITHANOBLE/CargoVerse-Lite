@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 class AdminAnalytics(BaseModel):
     total_revenue: float
     providers: int

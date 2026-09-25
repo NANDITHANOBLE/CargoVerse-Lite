@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+
 from app.core.deps import get_current_user
 from app.database import get_db
 from app.models.notification import Notification
@@ -15,7 +16,7 @@ def list_my_notifications(
 ):
     query = db.query(Notification).filter(Notification.user_id == user.id)
     if unread_only:
-        query = query.filter(Notification.is_read == False)  # noqa: E712
+        query = query.filter(Notification.is_read == False)
     return query.order_by(Notification.created_at.desc()).all()
 
 @router.get("/unread-count")
@@ -25,7 +26,7 @@ def unread_count(
 ):
     count = (
         db.query(Notification)
-        .filter(Notification.user_id == user.id, Notification.is_read == False)  # noqa: E712
+        .filter(Notification.user_id == user.id, Notification.is_read == False)
         .count()
     )
     return {"unread_count": count}
@@ -53,7 +54,7 @@ def mark_all_as_read(
     db: Session = Depends(get_db),
 ):
     db.query(Notification).filter(
-        Notification.user_id == user.id, Notification.is_read == False  # noqa: E712
+        Notification.user_id == user.id, Notification.is_read == False
     ).update({"is_read": True})
     db.commit()
     return {"message": "All notifications marked as read"}

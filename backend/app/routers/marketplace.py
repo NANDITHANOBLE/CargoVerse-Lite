@@ -59,7 +59,6 @@ def search_containers(
             )
         )
 
-    reverse = sort_by == "trust_score"
     if sort_by in ("price", "transit_days"):
         results.sort(key=lambda r: getattr(r, "price_per_cbm" if sort_by == "price" else "transit_days"))
     elif sort_by == "trust_score":

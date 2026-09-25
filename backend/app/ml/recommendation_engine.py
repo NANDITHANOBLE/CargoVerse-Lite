@@ -11,8 +11,8 @@ real data to switch to the XGBoost-based model automatically.
 """
 
 import pandas as pd
-from xgboost import XGBRegressor
 from sklearn.preprocessing import StandardScaler
+from xgboost import XGBRegressor
 
 FEATURES = ["price_per_cbm", "transit_days", "trust_score", "available_space_cbm"]
 
