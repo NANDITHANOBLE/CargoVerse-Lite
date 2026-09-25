@@ -2,51 +2,67 @@
 
 <div align="center">
 
-### AI-Powered Cargo Space Sharing Marketplace for SMEs & Exporters
+# AI-Powered Cargo Space Sharing Marketplace
 
-**"Uber for Cargo Space"**
+### "Uber for Cargo Space"
 
-A real-time cargo space sharing platform that enables businesses to book only the cargo capacity they need, while logistics providers monetize unused transportation capacity through an intelligent AI-driven marketplace.
+A real-time logistics marketplace that enables SMEs and exporters to book only the cargo capacity they need while allowing logistics providers to monetize unused transportation space.
 
-![Status](https://img.shields.io/badge/Status-Active-FastAPI](https://img.shields.io/badge/FastAPI9688
-![Python](https://img.shields.io/badge/Python-3.10+-Powered](https://img.shields.io/badge/AI-Powered-orange(https://img.shields.io/badge/WebSocketsrple
-![License](https://img.shields.io/badge/License-Portfoliov>
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?he-badge&logo=fastapi
+![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-theo=python
+![WebSockets](https://img.shields.io/badgeal_Time-purple?style=for-the-badge
+![AI Powered](https://img.shields.io/badge/nge?style=for-the-badge
+![SQLite](https://img.shields.io/badge/Databaseeen?style=for-the-badge
 
----
-
-# 🌍 Problem Statement
-
-Global logistics often suffers from inefficient cargo utilization.
-
-Small and medium-sized exporters frequently pay for entire containers despite requiring only a fraction of the available space. Simultaneously, logistics providers operate with partially filled containers, resulting in lost revenue and underutilized transportation assets.
-
-CargoVerse AI Lite solves this challenge by creating an intelligent cargo-sharing marketplace where:
-
-- Traders book only the space they need
-- Providers monetize unused cargo capacity
-- AI recommends optimal shipment options
-- Real-time systems maintain operational visibility
-- Smart pricing and route optimization improve efficiency
+</div>
 
 ---
 
-# 🎯 Vision
+## 🌟 Overview
 
-To build a next-generation logistics ecosystem where cargo space becomes a shared, intelligent, and optimally utilized digital resource.
+CargoVerse AI Lite is an intelligent cargo-space-sharing platform designed to solve one of the biggest inefficiencies in logistics: **unused transportation capacity**.
+
+Instead of booking an entire container, traders can reserve only the required cargo space while logistics providers can monetize unused capacity through a centralized marketplace powered by AI recommendations, dynamic pricing insights, route optimization, and real-time shipment visibility.
 
 ---
 
-# ✨ Key Features
+## 🎯 Problem Statement
+
+### Current Challenges
+
+- SMEs often pay for underutilized containers.
+- Logistics providers experience revenue loss due to empty cargo space.
+- Shipment visibility is limited.
+- Route planning is often inefficient.
+- Provider validation is mostly manual.
+- Pricing lacks transparency.
+
+### Solution
+
+CargoVerse AI Lite creates a shared logistics ecosystem where:
+
+✅ Traders book only required space
+
+✅ Providers maximize container utilization
+
+✅ AI recommends the best transportation options
+
+✅ Real-time systems provide shipment visibility
+
+✅ Analytics support data-driven decisions
+
+---
+
+# 🚀 Core Features
 
 ## 🔐 Authentication & Authorization
 
-- JWT-based authentication
-- Secure password hashing with bcrypt
-- Role-based access control
-- Protected API endpoints
-- User session management
+- JWT Authentication
+- Password Hashing (bcrypt)
+- Role-Based Access Control
+- Protected FastAPI Routes
 
-### Supported Roles
+### User Roles
 
 - Admin
 - Provider
@@ -54,158 +70,113 @@ To build a next-generation logistics ecosystem where cargo space becomes a share
 
 ---
 
-## 🏢 Provider Verification Workflow
+## 🏢 Provider Verification System
 
-To ensure platform trust and service quality, logistics providers undergo a structured verification process.
+A weighted inspection framework ensures marketplace trust.
 
-### Weighted Inspection Scoring
+### Verification Criteria
 
 | Component | Weight |
-|------------|---------|
-| Documents Verification | 30% |
-| Infrastructure Assessment | 30% |
-| Compliance Check | 20% |
-| Fleet Evaluation | 20% |
+|-----------|----------|
+| Documents | 30% |
+| Infrastructure | 30% |
+| Compliance | 20% |
+| Fleet Quality | 20% |
 
-### Approval Logic
+### Approval Rule
 
 ```text
-Score >= 80
-      ↓
- Approved
+Score >= 80  → Approved
 
-Score < 80
-      ↓
- Rejected
+Score < 80   → Rejected
 ```
-
-### Benefits
-
-- Maintains marketplace reliability
-- Enhances customer trust
-- Reduces fraudulent listings
-- Improves shipment quality
 
 ---
 
 ## 🚛 Cargo Space Management
 
-Providers can publish transportation capacity across multiple transportation modes.
+Providers can publish cargo listings for:
 
-### Supported Transport Types
-
-- 🚢 Sea Cargo
+- 🚢 Sea Freight
 - 🚛 Road Freight
 - 🚂 Rail Freight
-- ✈️ Air Cargo
+- ✈️ Air Freight
 
-### Listing Information
+### Listing Details
 
-- Route Details
-- Cargo Type
+- Route
 - Capacity
 - Available Space
-- Transit Duration
 - Pricing
-- Shipment Schedule
+- Transit Duration
+- Shipment Type
 
 ---
 
 ## 🛒 Cargo Marketplace
 
-A searchable marketplace where traders discover available cargo opportunities.
+Search and book available cargo space using filters such as:
 
-### Search Filters
-
-- Route
-- Transportation Mode
-- Pricing
+- Origin
+- Destination
 - Capacity
+- Price
 - Trust Score
-- Availability
-- Transit Duration
-
-### Marketplace Benefits
-
-✅ Better Price Transparency
-
-✅ Faster Provider Discovery
-
-✅ Higher Container Utilization
-
-✅ Improved Logistics Efficiency
+- Transportation Mode
 
 ---
 
-## 💳 Intelligent Booking Engine
+## 💰 Intelligent Booking Engine
 
-The booking engine automatically calculates total shipping costs.
-
-### Pricing Formula
+### Price Calculation
 
 ```text
-Final Amount
+Final Price
 
-=
-Base Cost
+= Base Cost
 + GST (18%)
 + Insurance (2%)
-+ Documentation Charges
-```
-
-### Shipment Lifecycle
-
-```text
-Booked
-   ↓
-Confirmed
-   ↓
-In Transit
-   ↓
-Arrived
-   ↓
-Delivered
++ Documentation Fee
 ```
 
 ---
 
-# ⚡ Real-Time Capabilities
+# ⚡ Real-Time Features
 
 ---
 
 ## 📡 Live Capacity Tracking
 
-Built using WebSockets.
+Powered by WebSockets.
 
-Whenever a booking is placed:
+### Features
 
-- Available space updates instantly
-- Capacity percentages refresh automatically
-- Subscribers receive real-time notifications
-- No page refresh required
+- Instant Capacity Updates
+- Occupancy Monitoring
+- Live Booking Synchronization
+- No Page Refresh Required
 
 ---
 
 ## 💬 Real-Time Chat
 
-Direct communication between traders and logistics providers.
+Communication between traders and providers.
 
-### Features
+### Capabilities
 
 - Instant Messaging
-- Conversation History
 - Typing Indicators
 - Seen Status
-- Live Message Delivery
-- User Presence Tracking
+- Conversation History
+- WebSocket Delivery
 
 ---
 
 ## 📦 Shipment Tracking
 
-Track shipments throughout the transportation lifecycle.
+Monitor shipment progress end-to-end.
 
-### Tracking Stages
+### Shipment Lifecycle
 
 ```text
 Booked
@@ -219,110 +190,90 @@ Arrived
 Delivered
 ```
 
-### Capabilities
+### Tracking Features
 
-- Live Status Updates
-- Progress Visualization
-- Delivery Monitoring
-- Shipment History
+- Progress Updates
+- Status Monitoring
+- Delivery Timeline
 
 ---
 
 ## 🔔 Notification Center
 
-A centralized notification management system.
+Receive live event notifications.
 
-### Notification Events
+### Supported Events
 
 - New Bookings
-- Capacity Changes
 - Shipment Updates
 - Verification Status
+- Capacity Changes
 - Payment Updates
-- System Alerts
 
-### Features
+### Capabilities
 
-- Real-Time Push Delivery
-- Read/Unread Tracking
+- Real-Time Push Notifications
+- Read / Unread Tracking
 - Persistent Storage
-- User-Specific Streams
 
 ---
 
 # 🤖 Artificial Intelligence Modules
 
-CargoVerse AI Lite incorporates intelligent decision-making modules to improve logistics operations.
-
 ---
 
-## 🧠 AI Module 1: Container Recommendation Engine
+## 🧠 Container Recommendation Engine
 
-Recommends the most suitable cargo options using a composite scoring mechanism.
+Intelligently suggests the most suitable cargo options.
 
-### Evaluation Parameters
+### Recommendation Factors
 
-- Cost Efficiency
+- Price
 - Transit Time
-- Provider Trust Score
-- Capacity Availability
+- Trust Score
+- Available Capacity
 
-### Recommendation Score
+### Scoring Logic
 
 ```text
-Recommendation Score
+Final Score
 
 =
-Price Weight
+Price Score
 +
-Transit Weight
+Transit Score
 +
-Trust Weight
+Trust Score
 +
-Capacity Weight
+Capacity Score
 ```
-
-### Future Enhancement
-
-- XGBoost Ranking Models
-- Personalized Recommendations
-- Demand-Aware Suggestions
 
 ---
 
-## 📈 AI Module 2: Dynamic Pricing Prediction
+## 📈 Dynamic Pricing Prediction
 
-Predicts future cargo pricing trends.
+Predicts market behavior based on:
 
-### Input Variables
-
-- Market Demand
-- Booking Urgency
-- Seasonality
+- Seasonal Demand
 - Route Popularity
+- Booking Urgency
 - Capacity Utilization
 
-### Prediction Output
+### Predicted Output
 
 ```text
 ↑ Price Increase
 
-→ Stable Pricing
+→ Stable
 
 ↓ Price Decrease
 ```
 
-### Benefits
-
-- Better Booking Decisions
-- Revenue Optimization
-- Market Awareness
-
 ---
 
-## 🗺️ AI Module 3: Route Optimization
+## 🗺️ Route Optimization Engine
 
-Compares logistics routes across different transportation modes.
+Evaluates multiple logistics routes.
 
 ### Example
 
@@ -336,121 +287,89 @@ Road → Rail → Sea
 
 ### Optimization Goals
 
-- Lower Transportation Cost
-- Faster Delivery
-- Higher Efficiency
-- Better Resource Utilization
+- Lower Cost
+- Faster Transit
+- Better Efficiency
 
 ---
 
 # 📊 Analytics Dashboard
 
-Role-specific analytical insights.
-
 ---
 
 ## 👨‍💼 Admin Dashboard
 
-Monitor:
+Tracks:
 
 - Total Revenue
+- Occupancy Rate
+- Pending Approvals
 - Active Users
-- Occupancy Rates
-- Marketplace Growth
-- Pending Verifications
-- Booking Statistics
+- Platform Growth
 
 ---
 
 ## 🏢 Provider Dashboard
 
-Track:
+Tracks:
 
 - Revenue
-- Cargo Utilization
-- Container Occupancy
 - Ratings
 - Active Listings
-- Booking Performance
+- Cargo Utilization
+- Booking Activity
 
 ---
 
 ## 👤 Trader Dashboard
 
-Analyze:
+Tracks:
 
-- Total Bookings
+- Bookings
 - Shipping Expenses
 - Cost Savings
-- Active Shipments
-- Route Usage Patterns
+- Shipment Status
 
 ---
 
-# 🏗️ System Architecture
-
-```text
-Frontend
-(HTML/CSS/JS)
-       │
-       ▼
-
-FastAPI Backend
-(REST APIs + WebSockets)
-
-       │
-
- ┌────────────┬────────────┬────────────┐
- │            │            │
- ▼            ▼            ▼
-
-Auth      Marketplace     AI Engine
-
- │            │            │
- ▼            ▼            ▼
-
-SQLAlchemy   SQLite    Recommendation
-ORM                     Pricing
-                         Route Optimization
-
-       │
-       ▼
-
-Analytics Layer
-```
-
----
-
-# 🛠️ Tech Stack
+# 🏗️ Tech Stack
 
 ## Backend
 
-- FastAPI
-- SQLAlchemy
-- Pydantic
-- Python-Jose
-- Passlib
-- Uvicorn
-- WebSockets
+```text
+FastAPI
+SQLAlchemy
+Pydantic
+Python-Jose
+Passlib
+WebSockets
+Uvicorn
+```
 
 ## Database
 
-- SQLite
-- PostgreSQL Ready
+```text
+SQLite
+(PostgreSQL Ready)
+```
 
 ## AI & Machine Learning
 
-- Scikit-Learn
-- XGBoost
-- Pandas
-- NumPy
+```text
+Scikit-Learn
+XGBoost
+Pandas
+NumPy
+```
 
 ## Frontend
 
-- HTML5
-- CSS3
-- JavaScript
-- Cyberpunk UI Theme
+```text
+HTML5
+CSS3
+JavaScript
+Cyberpunk UI Theme
+```
 
 ---
 
@@ -460,7 +379,6 @@ Analytics Layer
 CargoVerse-Lite
 │
 ├── backend
-│   │
 │   ├── app
 │   │   ├── core
 │   │   ├── ml
@@ -482,8 +400,8 @@ CargoVerse-Lite
     ├── css
     ├── js
     ├── chat-test.html
-    ├── notifications-test.html
     ├── tracking-test.html
+    ├── notifications-test.html
     ├── analytics-test.html
     ├── ai-recommend-test.html
     ├── pricing-test.html
@@ -492,29 +410,33 @@ CargoVerse-Lite
 
 ---
 
-# 🚀 Installation
+# ⚙️ Installation
 
-## Clone Repository
+### Clone Repository
 
 ```bash
 git clone https://github.com/NANDITHANOBLE/CargoVerse-Lite.git
+```
 
+### Navigate To Backend
+
+```bash
 cd CargoVerse-Lite/backend
 ```
 
-## Create Virtual Environment
+### Create Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-## Activate Environment
+### Activate Environment
 
 ```powershell
 venv\Scripts\Activate.ps1
 ```
 
-## Install Dependencies
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -522,37 +444,34 @@ pip install -r requirements.txt
 
 ---
 
-# ⚙️ Environment Configuration
+# 🔧 Environment Setup
 
-Create a `.env` file.
+Create a `.env` file from `.env.example`
 
 ```bash
 copy .env.example .env
 ```
 
-Example Configuration:
+Example:
 
 ```env
 SECRET_KEY=your_secret_key
-
 ALGORITHM=HS256
-
 ACCESS_TOKEN_EXPIRE_MINUTES=60
-
 DATABASE_URL=sqlite:///./cargoverse.db
 ```
 
 ---
 
-# ▶️ Running The Application
+# ▶️ Running The Project
 
-## Seed Admin User
+### Seed Admin User
 
 ```bash
 python scripts/seed_admin.py
 ```
 
-## Launch FastAPI Server
+### Start Server
 
 ```bash
 uvicorn app.main:app --reload --reload-dir app
@@ -562,100 +481,71 @@ uvicorn app.main:app --reload --reload-dir app
 
 # 📚 API Documentation
 
-Once the application starts:
+After starting the application:
 
 ```text
 http://127.0.0.1:8000/docs
 ```
 
-Swagger UI provides interactive API testing.
-
----
-
-# 🧪 Frontend Testing Modules
-
-The project includes standalone frontend clients.
-
-| Module | Test File |
-|----------|-----------|
-| Capacity Tracking | ws-test.html |
-| Chat System | chat-test.html |
-| Shipment Tracking | tracking-test.html |
-| Notification Center | notifications-test.html |
-| Analytics Dashboard | analytics-test.html |
-| Container Recommendation | ai-recommend-test.html |
-| Dynamic Pricing | pricing-test.html |
-| Route Optimization | route-optimizer-test.html |
-
 ---
 
 # 🎓 Skills Demonstrated
 
-This project showcases expertise in:
-
-- FastAPI Backend Development
+- FastAPI Development
 - REST API Design
-- JWT Authentication
-- RBAC Authorization
 - SQLAlchemy ORM
-- Real-Time Communication
-- WebSocket Architecture
-- Logistics Technology
+- JWT Authentication
+- Role-Based Authorization
+- WebSocket Communication
+- Real-Time Systems
 - Recommendation Systems
-- AI Integration
 - Dynamic Pricing Models
-- Route Optimization Algorithms
-- Dashboard Analytics
-- Software Architecture Design
+- Route Optimization
+- Logistics Technology
+- Analytics Engineering
 
 ---
 
-# 🚀 Future Roadmap
+# 🚀 Future Enhancements
 
 - PostgreSQL Migration
-- Redis Integration
+- Redis Caching
 - Docker Deployment
 - Kubernetes Support
 - Payment Gateway Integration
-- Predictive Demand Forecasting
-- LLM-Based Logistics Assistant
-- Fraud Detection Engine
-- Mobile Applications
-- Multi-Tenant SaaS Platform
+- AI Demand Forecasting
+- Fraud Detection
+- LLM-Powered Logistics Assistant
+- Mobile Application
 
 ---
 
-# 💡 Why CargoVerse AI Lite?
+# 👩‍💻 Author
 
-Unlike traditional logistics platforms, CargoVerse AI Lite combines:
+## Nanditha Noble
 
-✅ Shared Cargo Marketplace
+Associate Engineer - Technology
 
-✅ AI-Based Recommendations
+- Artificial Intelligence
+- Machine Learning
+- Data Science
+- Generative AI
+- Backend Engineering
 
-✅ Dynamic Pricing Intelligence
+### GitHub
 
-✅ Route Optimization
-
-✅ Real-Time Tracking
-
-✅ Real-Time Communication
-
-✅ Capacity Monetization
-
-✅ Analytics-Driven Decisions
-
-into a single intelligent logistics ecosystem.
+👉 https://github.com/NANDITHANOBLE
 
 ---
 
 # ⭐ Support
 
-If you found this project helpful or interesting, please consider giving it a ⭐ on GitHub.
-
-It helps support the project and encourages future improvements.
+If you found this project useful, consider giving it a ⭐ on GitHub.
 
 ---
 
-## "Transforming unused cargo capacity into intelligent opportunities."
-`
+<div align="center">
+
+### 🚢 Transforming Unused Cargo Capacity into Intelligent Opportunities 🚢
+
+</div>
