@@ -5,12 +5,16 @@ from app.core.deps import require_role
 from app.database import get_db
 from app.ml.pricing_model import predictor
 from app.ml.recommendation_engine import recommend_best
+from app.ml.route_optimizer import optimize_route
 from app.models.container import Container
 from app.models.provider import Provider
 from app.schemas.ai_schema import RecommendationRequest, RecommendationResponse
 from app.schemas.pricing_schema import PricingForecastRequest, PricingForecastResponse
+from app.schemas.route_schema import RouteOptimizationRequest, RouteOptimizationResponse
 
 router = APIRouter(prefix="/ai", tags=["AI Modules"])
+
+VALID_MODES = {"road", "rail", "sea", "air"}
 
 @router.post("/recommend", response_model=RecommendationResponse)
 def recommend_container(
@@ -71,4 +75,16 @@ def pricing_forecast(
     user=Depends(require_role("trader")),
 ):
     result = predictor.predict(payload.dict())
+    return result
+
+@router.post("/optimize-route", response_model=RouteOptimizationResponse)
+def optimize_route_endpoint(
+    payload: RouteOptimizationRequest,
+    user=Depends(require_role("trader")),
+):
+    mode = payload.current_mode.lower()
+    if mode not in VALID_MODES:
+        raise HTTPException(400, f"current_mode must be one of {sorted(VALID_MODES)}")
+
+    result = optimize_route(payload.distance_km, mode)
     return result

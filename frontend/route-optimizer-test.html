@@ -1,0 +1,65 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>CargoVerse Route Optimization Test</title>
+  <link rel="stylesheet" href="css/route-optimizer-test.css">
+</head>
+<body>
+  <h1>Route Optimization Test</h1>
+
+  <div class="setup-row">
+    <label>Access Token</label><br>
+    <input id="token" style="width: 500px;" placeholder="Trader Access Token">
+  </div>
+
+  <div class="setup-row">
+    <label>Distance (km)</label><br>
+    <input id="distanceKm" type="number" value="3000">
+  </div>
+
+  <div class="setup-row">
+    <label>Current Mode</label><br>
+    <select id="currentMode">
+      <option value="road">Road</option>
+      <option value="sea" selected="">Sea</option>
+      <option value="rail">Rail</option>
+      <option value="air">Air</option>
+    </select>
+  </div>
+
+  <button onclick="optimizeRoute()">Optimize Route</button>
+
+  <div id="resultCard" class="result-card">
+    <div id="bestRouteBanner" class="best-route-banner"></div>
+
+    <div class="summary-row">
+      <div class="summary-stat">
+        <div class="value" id="costReduced"></div>
+        <div class="label">Cost Reduced</div>
+      </div>
+      <div class="summary-stat">
+        <div class="value" id="timeDelta"></div>
+        <div class="label">Delivery Time</div>
+      </div>
+      <div class="summary-stat">
+        <div class="value" id="currentCost"></div>
+        <div class="label">Your Current Cost</div>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Route</th>
+          <th>Cost/kg</th>
+          <th>Transit Days</th>
+        </tr>
+      </thead>
+      <tbody id="optionsBody"></tbody>
+    </table>
+  </div>
+
+  <div id="log"></div>
+
+  
+
+</body></html>
