@@ -1,0 +1,28 @@
+.onboard-wrap { max-width: 580px; margin: 0 auto; }
+.onboard-wrap h1 { font-size: 22px; color: var(--cyber-cyan); margin-bottom: 6px; }
+.onboard-wrap .subtitle { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.pending-view {
+  text-align: center;
+  padding: 20px 0;
+}
+.pending-icon { font-size: 48px; margin-bottom: 14px; }
+.pending-status-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 10px 0 20px;
+}
+.pending-status-badge.pending { background: rgba(255,196,0,0.15); color: #ffd84d; border: 1px solid #ffc400; }
+.pending-status-badge.inspection_scheduled { background: rgba(0,217,255,0.15); color: var(--neon-blue); border: 1px solid var(--neon-blue); }
+.pending-status-badge.approved { background: rgba(60,255,176,0.15); color: #3cffb0; border: 1px solid #3cffb0; }
+.pending-status-badge.rejected { background: rgba(255,60,60,0.15); color: #ff8080; border: 1px solid #ff5c5c; }

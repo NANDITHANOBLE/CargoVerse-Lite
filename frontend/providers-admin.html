@@ -1,0 +1,68 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>Provider Approvals - CargoVerse AI Lite</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/providers-admin.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main class="page-content">
+    <div class="dashboard-header fade-up">
+      <div>
+        <h1 style="font-size:26px; color:var(--cyber-cyan);">Provider Approvals</h1>
+        <div class="subtitle" style="font-size:13px; color:var(--text-dim); margin-top:4px;">Review and score provider applications</div>
+      </div>
+    </div>
+
+    <div class="provider-tabs fade-up">
+      <div class="provider-tab active" data-tab="pending">Pending</div>
+      <div class="provider-tab" data-tab="inspection_scheduled">Inspection Scheduled</div>
+      <div class="provider-tab" data-tab="approved">Approved</div>
+      <div class="provider-tab" data-tab="rejected">Rejected</div>
+      <div class="provider-tab" data-tab="all">All</div>
+    </div>
+
+    <div class="glass-card fade-up">
+      <div id="providersList"></div>
+    </div>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <div id="scoreModalOverlay" class="score-modal-overlay">
+    <div class="score-modal">
+      <h3>Submit Inspection Score</h3>
+
+      <div class="score-field">
+        <label><span>Documents (30%)</span><span id="docScoreVal">70</span></label>
+        <input type="range" id="docScore" min="0" max="100" value="70">
+      </div>
+      <div class="score-field">
+        <label><span>Infrastructure (30%)</span><span id="infraScoreVal">70</span></label>
+        <input type="range" id="infraScore" min="0" max="100" value="70">
+      </div>
+      <div class="score-field">
+        <label><span>Compliance (20%)</span><span id="complianceScoreVal">70</span></label>
+        <input type="range" id="complianceScore" min="0" max="100" value="70">
+      </div>
+      <div class="score-field">
+        <label><span>Fleet Quality (20%)</span><span id="fleetScoreVal">70</span></label>
+        <input type="range" id="fleetScore" min="0" max="100" value="70">
+      </div>
+
+      <div style="display:flex; gap:10px; margin-top:20px;">
+        <button class="btn btn-ghost" id="closeModalBtn" style="flex:1;">Cancel</button>
+        <button class="btn btn-primary" id="submitScoreBtn" style="flex:1;">Submit Score</button>
+      </div>
+    </div>
+  </div>
+
+  
+  
+  
+  
+  
+
+</body></html>
