@@ -1,0 +1,29 @@
+.checkout-wrap { max-width: 560px; margin: 0 auto; }
+.checkout-step { display: none; }
+.checkout-step.active { display: block; }
+
+.checkout-summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,217,255,0.1);
+  font-size: 14px;
+}
+.checkout-summary-row.total {
+  font-weight: 700;
+  color: var(--neon-blue);
+  font-size: 16px;
+  border-bottom: none;
+  padding-top: 14px;
+}
+
+.success-icon {
+  font-size: 56px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.success-title { text-align: center; font-size: 22px; color: var(--cyber-cyan); margin-bottom: 8px; }
+.success-sub { text-align: center; font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+
+.action-row { display: flex; gap: 12px; margin-top: 20px; }
+.action-row .btn { flex: 1; text-align: center; }

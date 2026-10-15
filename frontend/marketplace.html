@@ -1,0 +1,66 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>Marketplace — CargoVerse AI Lite</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/marketplace.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main class="page-content">
+    <div class="dashboard-header fade-up">
+      <div>
+        <h1 style="font-size:26px; color:var(--cyber-cyan);">Cargo Marketplace</h1>
+        <div class="subtitle" style="font-size:13px; color:var(--text-dim); margin-top:4px;">Search available container, truck, rail, and air cargo space</div>
+      </div>
+    </div>
+
+    <form id="searchForm" class="search-panel glass-card fade-up">
+      <div>
+        <label>Origin</label>
+        <input type="text" id="origin" placeholder="e.g. Chennai">
+      </div>
+      <div>
+        <label>Destination</label>
+        <input type="text" id="destination" placeholder="e.g. Singapore">
+      </div>
+      <div>
+        <label>Mode</label>
+        <select id="mode">
+          <option value="">Any</option>
+          <option value="road">Road</option>
+          <option value="rail">Rail</option>
+          <option value="sea">Sea</option>
+          <option value="air">Air</option>
+        </select>
+      </div>
+      <div>
+        <label>Max Price / CBM</label>
+        <input type="number" id="maxPrice" placeholder="e.g. 8000">
+      </div>
+      <div class="search-btn-wrap">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </form>
+
+    <div class="results-meta">
+      <span id="resultsCount">Searching...</span>
+      <select id="sortSelect" class="sort-select">
+        <option value="price">Sort: Price (Low to High)</option>
+        <option value="trust_score">Sort: Trust Score</option>
+        <option value="transit_days">Sort: Fastest</option>
+      </select>
+    </div>
+
+    <div id="resultsGrid" class="results-grid"></div>
+  </main>
+
+  <div id="app-footer"></div>
+
+  
+  
+  
+  
+  
+
+</body></html>

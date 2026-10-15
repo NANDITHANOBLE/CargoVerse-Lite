@@ -1,0 +1,90 @@
+.search-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin-bottom: 30px;
+}
+.search-panel input, .search-panel select {
+  width: 100%;
+  padding: 11px 14px;
+  background: #0E0E16;
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 13px;
+}
+.search-panel label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+.search-btn-wrap { display: flex; align-items: flex-end; }
+.search-btn-wrap button { width: 100%; padding: 11px; }
+
+.results-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.sort-select {
+  background: #0E0E16;
+  color: var(--neon-blue);
+  border: 1px solid rgba(0,217,255,0.3);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.result-card {
+  cursor: pointer;
+  position: relative;
+}
+.result-card .mode-badge {
+  position: absolute;
+  top: -10px;
+  right: 18px;
+  background: linear-gradient(135deg, var(--neon-blue), var(--electric-purple));
+  color: #050508;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+.result-route {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #fff;
+}
+.result-provider {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+}
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-top: 1px solid rgba(0,217,255,0.1);
+  font-size: 12px;
+}
+.result-row .label { color: var(--text-dim); }
+.result-row .val { color: var(--neon-blue); font-weight: 600; }
+.trust-stars { color: #ffc400; font-size: 12px; }
+
+.empty-state, .loading-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-dim);
+}
