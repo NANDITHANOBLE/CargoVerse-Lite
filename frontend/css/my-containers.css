@@ -1,0 +1,37 @@
+.add-container-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin-bottom: 30px;
+}
+.add-container-form input, .add-container-form select {
+  width: 100%;
+  padding: 10px 12px;
+  background: #0E0E16;
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 13px;
+}
+.add-container-form label { display: block; font-size: 11px; color: var(--text-dim); margin-bottom: 6px; }
+
+.container-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0,217,255,0.1);
+  font-size: 13px;
+}
+.container-row .cid { color: var(--electric-purple); font-weight: 700; font-size: 11px; }
+.container-row .route { color: #fff; font-weight: 600; }
+.edit-space-btn {
+  background: transparent;
+  border: 1px solid var(--neon-blue);
+  color: var(--neon-blue);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+}

@@ -1,0 +1,68 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>Provider Onboarding - CargoVerse AI Lite</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/provider-onboarding.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main class="page-content onboard-wrap">
+    <div class="glass-card fade-up">
+      <h1>Complete Your Provider Profile</h1>
+      <div class="subtitle">Submit your details to list cargo space on CargoVerse</div>
+
+      <div id="authError" class="auth-error"></div>
+
+      <form id="onboardForm">
+        <div class="form-grid-2">
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label>Company Name</label>
+            <input type="text" id="companyName" required="" placeholder="e.g. Kumar Logistics">
+          </div>
+          <div class="form-group">
+            <label>GST Number</label>
+            <input type="text" id="gstNumber" required="" placeholder="29ABCDE1234F1Z5">
+          </div>
+          <div class="form-group">
+            <label>PAN Number</label>
+            <input type="text" id="panNumber" required="" placeholder="ABCDE1234F">
+          </div>
+          <div class="form-group">
+            <label>Fleet Size</label>
+            <input type="number" id="fleetSize" required="" placeholder="e.g. 12">
+          </div>
+          <div class="form-group">
+            <label>Transport Mode</label>
+            <select id="transportMode" required="" style="width:100%; padding:11px 14px; background:#0E0E16; border:1px solid rgba(0,217,255,0.3); border-radius:8px; color:#fff;">
+              <option value="road">Road</option>
+              <option value="rail">Rail</option>
+              <option value="sea">Sea</option>
+              <option value="air">Air</option>
+            </select>
+          </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary btn-full">Submit for Review</button>
+      </form>
+
+      <div id="pendingView" class="pending-view" style="display:none;">
+        <div class="pending-icon">📦</div>
+        <h2 id="pendingCompanyName" style="font-size:18px; margin-bottom:8px;"></h2>
+        <div id="statusBadge" class="pending-status-badge"></div>
+        <p id="pendingMessage" style="color:var(--text-dim); font-size:13px; margin-bottom:16px;"></p>
+        <a id="goToDashboardBtn" href="dashboard-provider.html" class="btn btn-primary" style="display:none;">Go to Dashboard</a>
+      </div>
+    </div>
+  </main>
+
+  <div id="app-footer"></div>
+
+  
+  
+  
+  
+  
+
+</body></html>

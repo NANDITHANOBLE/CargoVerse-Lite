@@ -1,0 +1,81 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>My Containers - CargoVerse AI Lite</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/my-containers.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main class="page-content">
+    <div class="dashboard-header fade-up">
+      <div>
+        <h1 style="font-size:26px; color:var(--cyber-cyan);">My Containers</h1>
+        <div class="subtitle" style="font-size:13px; color:var(--text-dim); margin-top:4px;">List and manage your cargo space</div>
+      </div>
+    </div>
+
+    <div class="glass-card fade-up">
+      <h3 style="font-size:15px; color:var(--neon-blue); margin-bottom:14px;">Add New Container</h3>
+      <div id="formError" class="auth-error"></div>
+      <form id="addContainerForm" class="add-container-form">
+        <div>
+          <label>Mode</label>
+          <select id="mode" required="">
+            <option value="road">Road</option>
+            <option value="rail">Rail</option>
+            <option value="sea">Sea</option>
+            <option value="air">Air</option>
+          </select>
+        </div>
+        <div>
+          <label>Origin</label>
+          <input type="text" id="origin" required="" placeholder="Chennai">
+        </div>
+        <div>
+          <label>Destination</label>
+          <input type="text" id="destination" required="" placeholder="Singapore">
+        </div>
+        <div>
+          <label>Departure Date</label>
+          <input type="datetime-local" id="departureDate" required="">
+        </div>
+        <div>
+          <label>Capacity (tons)</label>
+          <input type="number" id="capacityTons" required="" placeholder="28">
+        </div>
+        <div>
+          <label>Available Space (CBM)</label>
+          <input type="number" id="availableSpace" required="" placeholder="10">
+        </div>
+        <div>
+          <label>Price per CBM</label>
+          <input type="number" id="pricePerCbm" required="" placeholder="6500">
+        </div>
+        <div>
+          <label>Transit Days</label>
+          <input type="number" id="transitDays" required="" placeholder="5">
+        </div>
+        <div style="display:flex; align-items:flex-end;">
+          <button type="submit" class="btn btn-primary" style="width:100%;">Add Container</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="glass-card fade-up" style="margin-top:24px;">
+      <h3 style="font-size:15px; color:var(--neon-blue); margin-bottom:14px;">Your Listed Containers</h3>
+      <div id="containersList"></div>
+    </div>
+  </main>
+
+  <div id="app-footer"></div>
+
+  
+  
+  
+  
+  
+
+</body></html>
