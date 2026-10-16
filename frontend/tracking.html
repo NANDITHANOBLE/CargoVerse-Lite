@@ -1,0 +1,54 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>Shipment Tracking - CargoVerse AI Lite</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/tracking-test.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main class="page-content">
+    <div class="dashboard-header fade-up">
+      <div>
+        <h1 style="font-size:26px; color:var(--cyber-cyan);">Shipment Tracking</h1>
+        <div class="subtitle" style="font-size:13px; color:var(--text-dim); margin-top:4px;">Live status of your bookings</div>
+      </div>
+    </div>
+
+    <div class="glass-card fade-up">
+      <div class="setup-row">
+        <input id="bookingId" placeholder="Booking ID" style="width: 400px;">
+        <button class="btn btn-ghost" onclick="fetchStatus()">Refresh Status</button>
+        <button class="btn btn-primary" onclick="advanceStatus()">Advance Status (Provider/Admin)</button>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-bar-track">
+          <div id="progressFill" class="progress-bar-fill"></div>
+        </div>
+        <div id="statusLabel" class="status-label">Status: -</div>
+
+        <div class="steps-row">
+          <div class="step" data-step="booked">Booked</div>
+          <div class="step" data-step="confirmed">Confirmed</div>
+          <div class="step" data-step="in_transit">In Transit</div>
+          <div class="step" data-step="arrived">Arrived</div>
+          <div class="step" data-step="delivered">Delivered</div>
+        </div>
+      </div>
+
+      <div id="log"></div>
+    </div>
+  </main>
+
+  <div id="app-footer"></div>
+
+  
+  
+  
+  
+  
+  
+
+</body></html>

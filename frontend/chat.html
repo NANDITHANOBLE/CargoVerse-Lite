@@ -1,0 +1,39 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>Messages - CargoVerse AI Lite</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/chat-test.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main class="page-content">
+    <div class="dashboard-header fade-up">
+      <div>
+        <h1 style="font-size:26px; color:var(--cyber-cyan);">Messages</h1>
+        <div class="subtitle" style="font-size:13px; color:var(--text-dim); margin-top:4px;">Chat directly with your trading partners</div>
+      </div>
+    </div>
+
+    <div class="glass-card fade-up">
+      <div class="setup-row">
+        <input id="otherUserId" placeholder="Other User's ID">
+        <button class="btn btn-primary" onclick="connect()">Connect</button>
+      </div>
+
+      <div id="chatWindow"></div>
+      <div id="typingIndicator" class="typing-indicator"></div>
+
+      <div class="message-input-row">
+        <input id="messageInput" placeholder="Type a message..." oninput="notifyTyping()" onkeydown="if(event.key==='Enter') sendMessage()">
+        <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </main>
+
+  <div id="app-footer"></div>
+
+  
+  
+</body></html>

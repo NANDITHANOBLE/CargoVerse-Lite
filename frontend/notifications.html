@@ -1,0 +1,41 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>Notifications - CargoVerse AI Lite</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/notifications-test.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main class="page-content">
+    <div class="dashboard-header fade-up">
+      <div>
+        <h1 style="font-size:26px; color:var(--cyber-cyan);">Notifications</h1>
+        <div class="subtitle" style="font-size:13px; color:var(--text-dim); margin-top:4px;">Stay updated on bookings, payments, and shipments</div>
+      </div>
+      <button class="btn btn-ghost" onclick="loadNotifications()">Refresh</button>
+    </div>
+
+    <div class="glass-card fade-up">
+      <div class="bell-row">
+        <div class="bell">
+          🔔
+          <span id="badge" class="badge" style="display:none;">0</span>
+        </div>
+        <span style="font-size:13px; color:var(--text-dim);">Click a notification to mark it as read</span>
+      </div>
+      <div id="notificationList" class="notification-list"></div>
+    </div>
+  </main>
+
+  <div id="app-footer"></div>
+
+  
+  
+  
+  
+  
+  
+
+</body></html>
