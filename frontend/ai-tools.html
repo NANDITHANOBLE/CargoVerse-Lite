@@ -1,0 +1,57 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>AI Tools - CargoVerse AI Lite</title>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/providers-admin.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main class="page-content">
+    <div class="dashboard-header fade-up">
+      <div>
+        <h1 style="font-size:26px; color:var(--cyber-cyan);">AI Tools</h1>
+        <div class="subtitle" style="font-size:13px; color:var(--text-dim); margin-top:4px;">Smarter decisions, powered by AI</div>
+      </div>
+    </div>
+
+    <div class="provider-tabs fade-up">
+      <div class="provider-tab active" data-tool="recommend">Container Recommendation</div>
+      <div class="provider-tab" data-tool="pricing">Pricing Forecast</div>
+      <div class="provider-tab" data-tool="route">Route Optimizer</div>
+    </div>
+
+    <iframe id="toolFrame" src="ai-recommend-test.html" style="width:100%; min-height:700px; border:none; border-radius:16px;"></iframe>
+  </main>
+
+  <div id="app-footer"></div>
+
+  
+  
+  
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!AuthState.requireAuth(["trader"])) return;
+      renderParticles();
+      renderHeader("ai-tools.html");
+      renderFooter();
+
+      const frames = {
+        recommend: "ai-recommend-test.html",
+        pricing: "pricing-test.html",
+        route: "route-optimizer-test.html",
+      };
+
+      document.querySelectorAll(".provider-tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll(".provider-tab").forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+          document.getElementById("toolFrame").src = frames[tab.dataset.tool];
+        });
+      });
+    });
+  </script>
+
+</body></html>

@@ -3,25 +3,31 @@ let myUserId = null;
 let otherUserId = null;
 let typingTimeout = null;
 
+document.addEventListener("DOMContentLoaded", () => {
+    if (!AuthState.requireAuth(["trader", "provider", "admin"])) return;
+
+    renderParticles();
+    renderHeader("chat.html");
+    renderFooter();
+
+    myUserId = AuthState.getUserId();
+});
+
 function connect() {
-    myUserId = document.getElementById("myUserId").value.trim();
     otherUserId = document.getElementById("otherUserId").value.trim();
 
     if (!myUserId || !otherUserId) {
-        alert("Please enter both your User ID and the other user's ID");
+        alert("Please enter the other user's ID");
         return;
     }
 
-    if (socket) {
-        socket.close();
-    }
+    if (socket) socket.close();
 
-    socket = new WebSocket(
-        `ws://127.0.0.1:8000/chat/ws/${myUserId}`
-    );
+    socket = new WebSocket(`ws://127.0.0.1:8000/chat/ws/${myUserId}`);
 
     socket.onopen = () => {
-        addSystemMessage(`✅ Connected as ${myUserId}`);
+        addSystemMessage(`Connected as ${myUserId}`);
+        loadHistory();
     };
 
     socket.onmessage = (event) => {
@@ -34,36 +40,46 @@ function connect() {
 
         if (data.type === "message") {
             const isSentByMe = data.sender_id === myUserId;
-            addBubble(
-                data.message,
-                isSentByMe,
-                data.delivered
-            );
+            addBubble(data.message, isSentByMe, data.delivered);
         }
     };
 
-    socket.onclose = () => {
-        addSystemMessage("❌ Disconnected");
-    };
+    socket.onclose = () => addSystemMessage("Disconnected");
+    socket.onerror = () => addSystemMessage("WebSocket error");
+}
 
-    socket.onerror = () => {
-        addSystemMessage("⚠️ WebSocket error");
-    };
+async function loadHistory() {
+    try {
+        const res = await fetch(
+            `http://127.0.0.1:8000/chat/history/${otherUserId}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${AuthState.getToken()}`,
+                },
+            }
+        );
+
+        const messages = await res.json();
+
+        messages.forEach((m) => {
+            addBubble(m.message, m.sender_id === myUserId, true);
+        });
+    } catch (err) {
+        console.warn("Could not load chat history:", err.message);
+    }
 }
 
 function sendMessage() {
     const input = document.getElementById("messageInput");
     const text = input.value.trim();
 
-    if (!text || !socket) {
-        return;
-    }
+    if (!text || !socket) return;
 
     socket.send(
         JSON.stringify({
             type: "message",
             receiver_id: otherUserId,
-            message: text
+            message: text,
         })
     );
 
@@ -71,14 +87,12 @@ function sendMessage() {
 }
 
 function notifyTyping() {
-    if (!socket) {
-        return;
-    }
+    if (!socket) return;
 
     socket.send(
         JSON.stringify({
             type: "typing",
-            receiver_id: otherUserId
+            receiver_id: otherUserId,
         })
     );
 }
@@ -97,21 +111,15 @@ function showTypingIndicator() {
 
 function addBubble(text, isSentByMe, delivered) {
     const chatWindow = document.getElementById("chatWindow");
-
     const bubble = document.createElement("div");
-    bubble.className = `bubble ${
-        isSentByMe ? "sent" : "received"
-    }`;
 
+    bubble.className = `bubble ${isSentByMe ? "sent" : "received"}`;
     bubble.textContent = text;
 
     if (isSentByMe) {
         const status = document.createElement("div");
         status.className = "status";
-        status.textContent = delivered
-            ? "Delivered ✓"
-            : "Sent (recipient offline)";
-
+        status.textContent = delivered ? "Delivered" : "Sent";
         bubble.appendChild(status);
     }
 
