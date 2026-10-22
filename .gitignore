@@ -9,6 +9,7 @@ venv/
 node_modules/
 dist/
 build/
+coverage/
 
 # Environment & secrets
 .env
@@ -20,8 +21,3 @@ build/
 
 # OS
 .DS_Store
-EOF
-*.db
-*.sqlite3
-
-.env
