@@ -1,4 +1,4 @@
-// Centralized auth/session state used across every page
+// FILE: frontend/js/auth-state.js
 const AuthState = (() => {
   const TOKEN_KEY = "cv_token";
   const USER_KEY = "cv_user";
@@ -34,6 +34,31 @@ const AuthState = (() => {
     return user ? user.role : null;
   }
 
+  // NEW: returns the logged-in user's id, used by chat/notifications sockets
+  function getUserId() {
+    const user = getUser();
+    return user ? user.id : null;
+  }
+
+  // NEW: guards a page. Redirects to login if not authenticated,
+  // or to the dashboard if the role isn't permitted.
+  // Returns true if the page may continue rendering.
+  function requireAuth(allowedRoles = []) {
+    if (!isLoggedIn()) {
+      sessionStorage.setItem(
+        "cv_redirect_after_login",
+        window.location.pathname + window.location.search
+      );
+      window.location.href = "login.html";
+      return false;
+    }
+    if (allowedRoles.length && !allowedRoles.includes(getRole())) {
+      window.location.href = "dashboard.html";
+      return false;
+    }
+    return true;
+  }
+
   // Attaches Authorization header automatically for API calls
   async function authFetch(url, options = {}) {
     const token = getToken();
@@ -44,5 +69,15 @@ const AuthState = (() => {
     return fetch(url, { ...options, headers });
   }
 
-  return { login, logout, getToken, getUser, isLoggedIn, getRole, authFetch };
+  return {
+    login,
+    logout,
+    getToken,
+    getUser,
+    isLoggedIn,
+    getRole,
+    getUserId,
+    requireAuth,
+    authFetch,
+  };
 })();
