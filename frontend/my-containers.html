@@ -1,81 +1,127 @@
 <html lang="en"><head>
   <meta charset="UTF-8">
-  <title>My Containers - CargoVerse AI Lite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Containers — CargoVerse Lite</title>
+  <meta name="description" content="List and manage your cargo space on CargoVerse Lite.">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/dashboard.css">
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/auth.css">
   <link rel="stylesheet" href="css/my-containers.css">
 </head>
 <body>
-  <div id="app-header"></div>
 
-  <main class="page-content">
-    <div class="dashboard-header fade-up">
-      <div>
-        <h1 style="font-size:26px; color:var(--cyber-cyan);">My Containers</h1>
-        <div class="subtitle" style="font-size:13px; color:var(--text-dim); margin-top:4px;">List and manage your cargo space</div>
+  <div class="app-shell">
+    <div id="sidebar-root"></div>
+
+    <main class="app-main page-fade">
+
+      <div class="dashboard-header">
+        <div class="dashboard-greeting">
+          <div>
+            <h1>My Containers</h1>
+            <div class="subtitle">List and manage your cargo space</div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="glass-card fade-up">
-      <h3 style="font-size:15px; color:var(--neon-blue); margin-bottom:14px;">Add New Container</h3>
-      <div id="formError" class="auth-error"></div>
-      <form id="addContainerForm" class="add-container-form">
-        <div>
-          <label>Mode</label>
-          <select id="mode" required="">
-            <option value="road">Road</option>
-            <option value="rail">Rail</option>
-            <option value="sea">Sea</option>
-            <option value="air">Air</option>
-          </select>
+      <!-- ===== Add Container Form ===== -->
+      <div class="card" style="margin-bottom:24px;">
+        <div class="section-card-title">
+          <span id="sectionAddIcon"></span> Add New Container
         </div>
-        <div>
-          <label>Origin</label>
-          <input type="text" id="origin" required="" placeholder="Chennai">
-        </div>
-        <div>
-          <label>Destination</label>
-          <input type="text" id="destination" required="" placeholder="Singapore">
-        </div>
-        <div>
-          <label>Departure Date</label>
-          <input type="datetime-local" id="departureDate" required="">
-        </div>
-        <div>
-          <label>Capacity (tons)</label>
-          <input type="number" id="capacityTons" required="" placeholder="28">
-        </div>
-        <div>
-          <label>Available Space (CBM)</label>
-          <input type="number" id="availableSpace" required="" placeholder="10">
-        </div>
-        <div>
-          <label>Price per CBM</label>
-          <input type="number" id="pricePerCbm" required="" placeholder="6500">
-        </div>
-        <div>
-          <label>Transit Days</label>
-          <input type="number" id="transitDays" required="" placeholder="5">
-        </div>
-        <div style="display:flex; align-items:flex-end;">
-          <button type="submit" class="btn btn-primary" style="width:100%;">Add Container</button>
-        </div>
-      </form>
-    </div>
 
-    <div class="glass-card fade-up" style="margin-top:24px;">
-      <h3 style="font-size:15px; color:var(--neon-blue); margin-bottom:14px;">Your Listed Containers</h3>
-      <div id="containersList"></div>
-    </div>
-  </main>
+        <div id="formError" class="form-error-box"></div>
 
-  <div id="app-footer"></div>
+        <form id="addContainerForm" class="add-container-form">
+          <div class="form-group">
+            <label for="mode">Mode</label>
+            <select id="mode" required="">
+              <option value="road">Road</option>
+              <option value="rail">Rail</option>
+              <option value="sea">Sea</option>
+              <option value="air">Air</option>
+            </select>
+          </div>
 
-  
-  
-  
-  
-  
+          <div class="form-group">
+            <label for="origin">Origin</label>
+            <div class="input-with-icon">
+              <span id="originIcon"></span>
+              <input type="text" id="origin" required="" placeholder="Chennai">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="destination">Destination</label>
+            <div class="input-with-icon">
+              <span id="destinationIcon"></span>
+              <input type="text" id="destination" required="" placeholder="Singapore">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="departureDate">Departure Date</label>
+            <input type="datetime-local" id="departureDate" required="" style="width:100%; padding:11px 14px; border:1px solid var(--border); border-radius:var(--radius); background:var(--background); color:var(--text); font-size:0.88rem;">
+          </div>
+
+          <div class="form-group">
+            <label for="capacityTons">Capacity (tons)</label>
+            <div class="input-with-icon">
+              <span id="capacityIcon"></span>
+              <input type="number" id="capacityTons" required="" placeholder="28">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="availableSpace">Available Space (CBM)</label>
+            <div class="input-with-icon">
+              <span id="availableSpaceIcon"></span>
+              <input type="number" id="availableSpace" required="" placeholder="10">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="pricePerCbm">Price per CBM</label>
+            <div class="input-with-icon">
+              <span id="priceIcon"></span>
+              <input type="number" id="pricePerCbm" required="" placeholder="6500">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="transitDays">Transit Days</label>
+            <div class="input-with-icon">
+              <span id="transitDaysIcon"></span>
+              <input type="number" id="transitDays" required="" placeholder="5">
+            </div>
+          </div>
+
+          <div class="submit-wrap">
+            <button type="submit" class="btn btn-primary" id="addContainerBtn"></button>
+          </div>
+        </form>
+      </div>
+
+      <!-- ===== Listed Containers ===== -->
+      <div class="card">
+        <div class="section-card-title">
+          <span id="sectionListIcon"></span> Your Listed Containers
+        </div>
+        <div id="containersList"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <div id="logout-modal-root"></div>
+  <div id="edit-space-modal-root"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/logout-modal.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/my-containers.js"></script>
+
 
 </body></html>
