@@ -1,90 +1,252 @@
+/* FILE: frontend/css/marketplace.css */
+
+/* ===== Search Panel ===== */
 .search-panel {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 14px;
-  margin-bottom: 30px;
+  gap: 16px;
+  margin-bottom: 28px;
+  align-items: end;
 }
-.search-panel input, .search-panel select {
-  width: 100%;
-  padding: 11px 14px;
-  background: #0E0E16;
-  border: 1px solid rgba(0, 217, 255, 0.3);
-  border-radius: 8px;
-  color: #fff;
-  font-size: 13px;
+
+.search-panel .form-group {
+  margin-bottom: 0;
 }
+
 .search-panel label {
-  display: block;
-  font-size: 11px;
-  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
   margin-bottom: 6px;
 }
-.search-btn-wrap { display: flex; align-items: flex-end; }
-.search-btn-wrap button { width: 100%; padding: 11px; }
 
+.search-panel .input-with-icon input,
+.search-panel .input-with-icon select {
+  width: 100%;
+  padding: 11px 14px 11px 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--background);
+  color: var(--text);
+  font-size: 0.88rem;
+  transition: var(--transition);
+}
+
+.search-panel .input-with-icon input:focus,
+.search-panel .input-with-icon select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--card);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-btn-wrap button {
+  width: 100%;
+  padding: 11px;
+}
+
+/* ===== Mode Filter Pills ===== */
+.mode-filter-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.mode-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--card);
+}
+
+.mode-pill:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.mode-pill.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+/* ===== Results Meta Bar ===== */
 .results-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 18px;
-  font-size: 13px;
-  color: var(--text-dim);
-}
-.sort-select {
-  background: #0E0E16;
-  color: var(--neon-blue);
-  border: 1px solid rgba(0,217,255,0.3);
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-size: 12px;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
+.results-meta .result-count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.sort-select-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-select {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+/* ===== Results Grid ===== */
 .results-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 20px;
 }
 
 .result-card {
   cursor: pointer;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
+
 .result-card .mode-badge {
   position: absolute;
   top: -10px;
-  right: 18px;
-  background: linear-gradient(135deg, var(--neon-blue), var(--electric-purple));
-  color: #050508;
-  font-size: 11px;
+  right: 20px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 12px;
+  padding: 5px 12px 5px 10px;
+  border-radius: 999px;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: var(--shadow-md);
 }
+
 .result-route {
-  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 4px;
-  color: #fff;
+  color: var(--secondary);
 }
+
+.result-route .cv-icon { color: var(--primary); flex-shrink: 0; }
+
 .result-provider {
-  font-size: 12px;
-  color: var(--text-dim);
-  margin-bottom: 14px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
+
+.trust-stars {
+  color: var(--warning);
+  display: inline-flex;
+  gap: 1px;
+}
+
 .result-row {
   display: flex;
   justify-content: space-between;
-  padding: 6px 0;
-  border-top: 1px solid rgba(0,217,255,0.1);
-  font-size: 12px;
+  align-items: center;
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem;
 }
-.result-row .label { color: var(--text-dim); }
-.result-row .val { color: var(--neon-blue); font-weight: 600; }
-.trust-stars { color: #ffc400; font-size: 12px; }
 
-.empty-state, .loading-state {
+.result-row .label {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.result-row .val {
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+.result-card-footer {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.result-card-footer .btn {
+  padding: 8px 16px;
+  font-size: 0.82rem;
+}
+
+/* ===== Empty / Loading / Error States ===== */
+.empty-state, .loading-state, .error-state {
+  grid-column: 1 / -1;
   text-align: center;
   padding: 60px 20px;
-  color: var(--text-dim);
+  color: var(--text-muted);
+}
+
+.empty-state .icon-wrap, .error-state .icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.06);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.error-state .icon-wrap {
+  background: rgba(239, 68, 68, 0.08);
+  color: var(--danger);
+}
+
+.empty-state h3, .error-state h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+/* ===== Skeleton Result Cards ===== */
+.skeleton-result-card {
+  height: 220px;
+}
+
+@media (max-width: 600px) {
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
 }

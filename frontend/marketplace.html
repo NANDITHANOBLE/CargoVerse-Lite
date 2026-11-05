@@ -1,66 +1,90 @@
 <html lang="en"><head>
   <meta charset="UTF-8">
-  <title>Marketplace — CargoVerse AI Lite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace — CargoVerse Lite</title>
+  <meta name="description" content="Search and compare available cargo space across road, rail, sea, and air from verified providers.">
   <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="css/marketplace.css">
 </head>
 <body>
-  <div id="app-header"></div>
 
-  <main class="page-content">
-    <div class="dashboard-header fade-up">
-      <div>
-        <h1 style="font-size:26px; color:var(--cyber-cyan);">Cargo Marketplace</h1>
-        <div class="subtitle" style="font-size:13px; color:var(--text-dim); margin-top:4px;">Search available container, truck, rail, and air cargo space</div>
-      </div>
-    </div>
+  <div class="app-shell">
+    <div id="sidebar-root"></div>
 
-    <form id="searchForm" class="search-panel glass-card fade-up">
-      <div>
-        <label>Origin</label>
-        <input type="text" id="origin" placeholder="e.g. Chennai">
-      </div>
-      <div>
-        <label>Destination</label>
-        <input type="text" id="destination" placeholder="e.g. Singapore">
-      </div>
-      <div>
-        <label>Mode</label>
-        <select id="mode">
-          <option value="">Any</option>
-          <option value="road">Road</option>
-          <option value="rail">Rail</option>
-          <option value="sea">Sea</option>
-          <option value="air">Air</option>
-        </select>
-      </div>
-      <div>
-        <label>Max Price / CBM</label>
-        <input type="number" id="maxPrice" placeholder="e.g. 8000">
-      </div>
-      <div class="search-btn-wrap">
-        <button type="submit" class="btn btn-primary">Search</button>
-      </div>
-    </form>
+    <main class="app-main page-fade">
 
-    <div class="results-meta">
-      <span id="resultsCount">Searching...</span>
-      <select id="sortSelect" class="sort-select">
-        <option value="price">Sort: Price (Low to High)</option>
-        <option value="trust_score">Sort: Trust Score</option>
-        <option value="transit_days">Sort: Fastest</option>
-      </select>
-    </div>
+      <div class="dashboard-header">
+        <div class="dashboard-greeting">
+          <div>
+            <h1 id="pageTitle">Cargo Marketplace</h1>
+            <div class="subtitle">Search available container, truck, rail, and air cargo space</div>
+          </div>
+        </div>
+      </div>
 
-    <div id="resultsGrid" class="results-grid"></div>
-  </main>
+      <!-- ===== Mode Filter Pills ===== -->
+      <div class="mode-filter-row" id="modeFilterRow"></div>
 
-  <div id="app-footer"></div>
+      <!-- ===== Search Panel ===== -->
+      <form id="searchForm" class="search-panel card">
+        <div class="form-group">
+          <label for="origin">Origin</label>
+          <div class="input-with-icon">
+            <span id="originIcon"></span>
+            <input type="text" id="origin" placeholder="e.g. Chennai">
+          </div>
+        </div>
 
-  
-  
-  
-  
-  
+        <div class="form-group">
+          <label for="destination">Destination</label>
+          <div class="input-with-icon">
+            <span id="destinationIcon"></span>
+            <input type="text" id="destination" placeholder="e.g. Singapore">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="maxPrice">Max Price / CBM</label>
+          <div class="input-with-icon">
+            <span id="maxPriceIcon"></span>
+            <input type="number" id="maxPrice" placeholder="e.g. 8000">
+          </div>
+        </div>
+
+        <div class="search-btn-wrap">
+          <button type="submit" class="btn btn-primary btn-icon">
+            Search
+          </button>
+        </div>
+      </form>
+
+      <!-- ===== Results Meta ===== -->
+      <div class="results-meta">
+        <span class="result-count" id="resultsCount">Searching...</span>
+        <div class="sort-select-wrap">
+          <label for="sortSelect" style="font-size:0.82rem; color:var(--text-muted);">Sort by</label>
+          <select id="sortSelect" class="sort-select">
+            <option value="price">Price (Low to High)</option>
+            <option value="trust_score">Trust Score</option>
+            <option value="transit_days">Fastest</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ===== Results Grid ===== -->
+      <div id="resultsGrid" class="results-grid"></div>
+
+    </main>
+  </div>
+
+  <div id="logout-modal-root"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/logout-modal.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/marketplace.js"></script>
+
 
 </body></html>
