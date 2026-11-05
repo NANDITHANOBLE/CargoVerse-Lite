@@ -1,74 +1,116 @@
 <html lang="en"><head>
   <meta charset="UTF-8">
-  <title>Container Details - CargoVerse AI Lite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Container Details — CargoVerse Lite</title>
+  <meta name="description" content="View cargo space details, get AI recommendations, and book your shipment.">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="css/container-detail.css">
 </head>
 <body>
-  <div id="app-header"></div>
 
-  <main class="page-content">
-    <a href="marketplace.html" style="font-size:13px; color:var(--text-dim);">← Back to Marketplace</a>
+  <div class="app-shell">
+    <div id="sidebar-root"></div>
 
-    <div class="detail-layout fade-up" style="margin-top:16px;">
-      <div class="glass-card">
-        <div class="detail-title" id="detailTitle">Loading...</div>
-        <div class="detail-provider">Mode: <span id="detailMode">-</span></div>
+    <main class="app-main page-fade">
 
-        <div class="detail-stats">
-          <div class="detail-stat-box">
-            <div class="label">Capacity</div>
-            <div class="value" id="statCapacity">-</div>
-          </div>
-          <div class="detail-stat-box">
-            <div class="label">Available Space</div>
-            <div class="value" id="statAvailable">-</div>
-          </div>
-          <div class="detail-stat-box">
-            <div class="label">Price</div>
-            <div class="value" id="statPrice">-</div>
-          </div>
-          <div class="detail-stat-box">
-            <div class="label">Transit Time</div>
-            <div class="value" id="statTransit">-</div>
-          </div>
-          <div class="detail-stat-box">
-            <div class="label">Departure Date</div>
-            <div class="value" id="statDeparture">-</div>
+      <a href="marketplace.html" class="back-link">
+        <span id="backIcon"></span> Back to Marketplace
+      </a>
+
+      <div class="detail-layout" style="margin-top:16px;">
+
+        <!-- ===== Left Column: Details ===== -->
+        <div class="card">
+          <div class="detail-mode-badge" id="detailModeBadge">Loading...</div>
+
+          <div class="detail-title" id="detailTitle">Loading...</div>
+          <div class="detail-provider" id="detailProvider"></div>
+
+          <div class="detail-stats" id="detailStatsGrid"></div>
+
+          <!-- Hidden template used to populate the real stats once data loads -->
+          <template id="detailStatsTemplate">
+            <div class="detail-stat-box">
+              <div class="icon-wrap" id="statCapacityIcon"></div>
+              <div>
+                <div class="label">Capacity</div>
+                <div class="value" id="statCapacity">-</div>
+              </div>
+            </div>
+            <div class="detail-stat-box">
+              <div class="icon-wrap" id="statAvailableIcon"></div>
+              <div>
+                <div class="label">Available Space</div>
+                <div class="value" id="statAvailable">-</div>
+              </div>
+            </div>
+            <div class="detail-stat-box">
+              <div class="icon-wrap" id="statPriceIcon"></div>
+              <div>
+                <div class="label">Price</div>
+                <div class="value" id="statPrice">-</div>
+              </div>
+            </div>
+            <div class="detail-stat-box">
+              <div class="icon-wrap" id="statTransitIcon"></div>
+              <div>
+                <div class="label">Transit Time</div>
+                <div class="value" id="statTransit">-</div>
+              </div>
+            </div>
+            <div class="detail-stat-box">
+              <div class="icon-wrap" id="statDepartureIcon"></div>
+              <div>
+                <div class="label">Departure Date</div>
+                <div class="value" id="statDeparture">-</div>
+              </div>
+            </div>
+          </template>
+
+          <div class="ai-widget">
+            <div class="ai-widget-title">
+              <span id="aiWidgetIcon"></span> AI Recommendation
+            </div>
+            <button class="btn btn-outline" id="getAiRecommendBtn"></button>
+            <div class="ai-result-box" id="aiResultBox"></div>
           </div>
         </div>
 
-        <div class="ai-widget">
-          <div class="ai-widget-title">AI Recommendation</div>
-          <button class="btn btn-ghost" id="getAiRecommendBtn">Check if this is the best option on this route</button>
-          <div class="ai-result-box" id="aiResultBox"></div>
+        <!-- ===== Right Column: Booking Sidebar ===== -->
+        <div class="card booking-sidebar">
+          <h3><span id="bookingSidebarIcon"></span> Book This Space</h3>
+
+          <div class="volume-input-group">
+            <label>Volume Needed (CBM)</label>
+            <div class="input-with-icon">
+              <span id="volumeIcon"></span>
+              <input type="number" id="volumeInput" value="1" min="0.5" step="0.5">
+            </div>
+          </div>
+
+          <div class="price-preview">
+            <div class="price-row"><span>Base Amount</span><span id="previewBase">-</span></div>
+            <div class="price-row"><span>GST (18%)</span><span id="previewGst">-</span></div>
+            <div class="price-row"><span>Insurance (2%)</span><span id="previewInsurance">-</span></div>
+            <div class="price-row total"><span>Estimated Total</span><span id="previewTotal">-</span></div>
+          </div>
+
+          <button class="btn btn-primary btn-full" id="bookNowBtn"></button>
         </div>
+
       </div>
+    </main>
+  </div>
 
-      <div class="glass-card booking-sidebar">
-        <h3>Book This Space</h3>
-        <label style="font-size:12px; color:var(--text-dim);">Volume Needed (CBM)</label>
-        <input type="number" id="volumeInput" value="1" min="0.5" step="0.5" style="width:100%; padding:10px; margin-top:6px; background:#0E0E16; border:1px solid rgba(0,217,255,0.3); border-radius:8px; color:#fff;">
+  <div id="logout-modal-root"></div>
 
-        <div class="price-preview">
-          <div class="price-row"><span>Base Amount</span><span id="previewBase">-</span></div>
-          <div class="price-row"><span>GST (18%)</span><span id="previewGst">-</span></div>
-          <div class="price-row"><span>Insurance (2%)</span><span id="previewInsurance">-</span></div>
-          <div class="price-row total"><span>Estimated Total</span><span id="previewTotal">-</span></div>
-        </div>
+  <script src="js/icons.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/logout-modal.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/container-detail.js"></script>
 
-        <button class="btn btn-primary" id="bookNowBtn" style="width:100%; padding:12px;">Proceed to Checkout</button>
-      </div>
-    </div>
-  </main>
-
-  <div id="app-footer"></div>
-
-  
-  
-  
-  
-  
 
 </body></html>

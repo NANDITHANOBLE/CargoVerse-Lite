@@ -1,63 +1,112 @@
 <html lang="en"><head>
   <meta charset="UTF-8">
-  <title>Checkout - CargoVerse AI Lite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — CargoVerse Lite</title>
+  <meta name="description" content="Review your booking, complete payment, and confirm your cargo shipment.">
   <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/auth.css">
   <link rel="stylesheet" href="css/booking-checkout.css">
 </head>
 <body>
-  <div id="app-header"></div>
 
-  <main class="page-content checkout-wrap">
+  <div class="app-shell">
+    <div id="sidebar-root"></div>
 
-    <!-- STEP 1: Review and enter weight -->
-    <div id="step1" class="checkout-step active glass-card fade-up">
-      <h1 style="font-size:22px; color:var(--cyber-cyan); margin-bottom:16px;">Review Your Booking</h1>
+    <main class="app-main page-fade checkout-wrap">
 
-      <div class="form-group">
-        <label>Cargo Weight (tons)</label>
-        <input type="number" id="weightInput" placeholder="e.g. 3" min="0.1" step="0.1">
+      <!-- ===== Step Progress Indicator ===== -->
+      <div class="checkout-stepper">
+        <div class="stepper-item active">
+          <div class="stepper-circle">1</div>
+          <div class="stepper-label">Review</div>
+        </div>
+        <div class="stepper-connector"></div>
+        <div class="stepper-item">
+          <div class="stepper-circle">2</div>
+          <div class="stepper-label">Payment</div>
+        </div>
+        <div class="stepper-connector"></div>
+        <div class="stepper-item">
+          <div class="stepper-circle">3</div>
+          <div class="stepper-label">Done</div>
+        </div>
       </div>
 
-      <div style="margin-top:20px;">
-        <div class="checkout-summary-row"><span>Volume</span><span id="sumVolume">-</span></div>
-        <div class="checkout-summary-row"><span>Base Amount</span><span id="sumBase">-</span></div>
-        <div class="checkout-summary-row"><span>GST (18%)</span><span id="sumGst">-</span></div>
-        <div class="checkout-summary-row"><span>Insurance (2%)</span><span id="sumInsurance">-</span></div>
-        <div class="checkout-summary-row"><span>Documentation Fee</span><span id="sumDocFee">-</span></div>
-        <div class="checkout-summary-row total"><span>Total</span><span id="sumTotal">-</span></div>
+      <!-- ===== STEP 1: Review and enter weight ===== -->
+      <div id="step1" class="checkout-step active card">
+        <div class="checkout-step-title">
+          <div class="icon-wrap" id="step1Icon"></div>
+          Review Your Booking
+        </div>
+
+        <div class="form-group">
+          <label for="weightInput">Cargo Weight (tons)</label>
+          <div class="input-with-icon">
+            <span id="weightIcon"></span>
+            <input type="number" id="weightInput" placeholder="e.g. 3" min="0.1" step="0.1">
+          </div>
+        </div>
+
+        <div style="margin-top:20px;">
+          <div class="checkout-summary-row"><span>Volume</span><span id="sumVolume">-</span></div>
+          <div class="checkout-summary-row"><span>Base Amount</span><span id="sumBase">-</span></div>
+          <div class="checkout-summary-row"><span>GST (18%)</span><span id="sumGst">-</span></div>
+          <div class="checkout-summary-row"><span>Insurance (2%)</span><span id="sumInsurance">-</span></div>
+          <div class="checkout-summary-row"><span>Documentation Fee</span><span id="sumDocFee">-</span></div>
+          <div class="checkout-summary-row total"><span>Total</span><span id="sumTotal">-</span></div>
+        </div>
+
+        <button id="confirmBookingBtn" class="btn btn-primary btn-full" style="margin-top:20px;"></button>
       </div>
 
-      <button id="confirmBookingBtn" class="btn btn-primary" style="width:100%; padding:12px; margin-top:20px;">Confirm Booking</button>
-    </div>
+      <!-- ===== STEP 2: Payment ===== -->
+      <div id="step2" class="checkout-step card">
+        <div class="checkout-step-title">
+          <div class="icon-wrap" id="step2Icon"></div>
+          Complete Payment
+        </div>
 
-    <!-- STEP 2: Payment -->
-    <div id="step2" class="checkout-step glass-card fade-up">
-      <h1 style="font-size:22px; color:var(--cyber-cyan); margin-bottom:16px;">Complete Payment</h1>
-      <p style="color:var(--text-dim); font-size:13px; margin-bottom:20px;">Booking confirmed! Click below to simulate payment via our mock gateway.</p>
-      <button id="payNowBtn" class="btn btn-primary" style="width:100%; padding:12px;">Pay Now</button>
-    </div>
+        <div class="payment-method-card">
+          <div class="icon-wrap" id="paymentMethodIcon"></div>
+          <div>
+            <div class="method-name">Secure Mock Gateway</div>
+            <div class="method-desc">Simulated payment for demo purposes</div>
+          </div>
+        </div>
 
-    <!-- STEP 3: Success -->
-    <div id="step3" class="checkout-step glass-card fade-up">
-      <div class="success-icon">✅</div>
-      <div class="success-title">Payment Successful!</div>
-      <div class="success-sub">Transaction Ref: <span id="txnRef"></span></div>
+        <div class="payment-security-note">
+          <span id="securityNoteIcon"></span> Your payment is encrypted and secure
+        </div>
 
-      <div class="action-row">
-        <a href="dashboard-trader.html" class="btn btn-ghost">Back to Dashboard</a>
-        <button onclick="goToTracking()" class="btn btn-primary">Track Shipment</button>
+        <button id="payNowBtn" class="btn btn-primary btn-full"></button>
       </div>
-    </div>
 
-  </main>
+      <!-- ===== STEP 3: Success ===== -->
+      <div id="step3" class="checkout-step card">
+        <div class="success-icon-wrap" id="successIcon"></div>
+        <div class="success-title">Payment Successful!</div>
+        <div class="success-sub">
+          Transaction Ref: <span class="txn-ref" id="txnRef"></span>
+        </div>
 
-  <div id="app-footer"></div>
+        <div class="action-row">
+          <a href="dashboard.html" class="btn btn-ghost">Back to Dashboard</a>
+          <button id="goToTrackingBtn" class="btn btn-primary"></button>
+        </div>
+      </div>
 
-  
-  
-  
-  
-  
+    </main>
+  </div>
+
+  <div id="logout-modal-root"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/logout-modal.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/booking-checkout.js"></script>
+
 
 </body></html>
