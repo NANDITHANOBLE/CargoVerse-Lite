@@ -1,54 +1,69 @@
 <html lang="en"><head>
   <meta charset="UTF-8">
-  <title>Shipment Tracking - CargoVerse AI Lite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shipment Tracking — CargoVerse Lite</title>
+  <meta name="description" content="Track the live status of your cargo shipment from booking to delivery.">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/dashboard.css">
-  <link rel="stylesheet" href="css/tracking-test.css">
+  <link rel="stylesheet" href="css/tracking.css">
 </head>
 <body>
-  <div id="app-header"></div>
 
-  <main class="page-content">
-    <div class="dashboard-header fade-up">
-      <div>
-        <h1 style="font-size:26px; color:var(--cyber-cyan);">Shipment Tracking</h1>
-        <div class="subtitle" style="font-size:13px; color:var(--text-dim); margin-top:4px;">Live status of your bookings</div>
-      </div>
-    </div>
+  <div class="app-shell">
+    <div id="sidebar-root"></div>
 
-    <div class="glass-card fade-up">
-      <div class="setup-row">
-        <input id="bookingId" placeholder="Booking ID" style="width: 400px;">
-        <button class="btn btn-ghost" onclick="fetchStatus()">Refresh Status</button>
-        <button class="btn btn-primary" onclick="advanceStatus()">Advance Status (Provider/Admin)</button>
-      </div>
+    <main class="app-main page-fade">
 
-      <div class="progress-container">
-        <div class="progress-bar-track">
-          <div id="progressFill" class="progress-bar-fill"></div>
-        </div>
-        <div id="statusLabel" class="status-label">Status: -</div>
-
-        <div class="steps-row">
-          <div class="step" data-step="booked">Booked</div>
-          <div class="step" data-step="confirmed">Confirmed</div>
-          <div class="step" data-step="in_transit">In Transit</div>
-          <div class="step" data-step="arrived">Arrived</div>
-          <div class="step" data-step="delivered">Delivered</div>
+      <div class="dashboard-header">
+        <div class="dashboard-greeting">
+          <div>
+            <h1>Shipment Tracking</h1>
+            <div class="subtitle">Live status of your bookings</div>
+          </div>
         </div>
       </div>
 
-      <div id="log"></div>
-    </div>
-  </main>
+      <div class="card">
 
-  <div id="app-footer"></div>
+        <div class="tracking-search-row">
+          <div class="input-with-icon">
+            <span id="bookingIdIcon"></span>
+            <input type="text" id="bookingId" placeholder="Enter Booking ID">
+          </div>
+          <button class="btn btn-outline" id="refreshBtn"></button>
+          <button class="btn btn-primary" id="advanceStatusBtn"></button>
+        </div>
 
-  
-  
-  
-  
-  
-  
+        <div class="progress-container" id="progressContainer">
+          <div class="progress-header">
+            <span class="booking-id-tag" id="bookingIdTag">No booking selected</span>
+          </div>
+
+          <div class="progress-bar-track">
+            <div id="progressFill" class="progress-bar-fill"></div>
+          </div>
+
+          <div class="status-label">
+            <span id="statusLabelIcon"></span>
+            <span id="statusLabelText">Enter a Booking ID to begin tracking</span>
+          </div>
+
+          <div class="steps-row" id="stepsRow"></div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <div id="logout-modal-root"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/logout-modal.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/tracking.js"></script>
+
 
 </body></html>

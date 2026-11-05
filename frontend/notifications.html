@@ -1,41 +1,60 @@
 <html lang="en"><head>
   <meta charset="UTF-8">
-  <title>Notifications - CargoVerse AI Lite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications — CargoVerse Lite</title>
+  <meta name="description" content="Stay updated on bookings, payments, and shipments.">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/dashboard.css">
-  <link rel="stylesheet" href="css/notifications-test.css">
+  <link rel="stylesheet" href="css/notifications.css">
 </head>
 <body>
-  <div id="app-header"></div>
 
-  <main class="page-content">
-    <div class="dashboard-header fade-up">
-      <div>
-        <h1 style="font-size:26px; color:var(--cyber-cyan);">Notifications</h1>
-        <div class="subtitle" style="font-size:13px; color:var(--text-dim); margin-top:4px;">Stay updated on bookings, payments, and shipments</div>
-      </div>
-      <button class="btn btn-ghost" onclick="loadNotifications()">Refresh</button>
-    </div>
+  <div class="app-shell">
+    <div id="sidebar-root"></div>
 
-    <div class="glass-card fade-up">
-      <div class="bell-row">
-        <div class="bell">
-          🔔
-          <span id="badge" class="badge" style="display:none;">0</span>
+    <main class="app-main page-fade">
+
+      <div class="dashboard-header">
+        <div class="dashboard-greeting">
+          <div>
+            <h1>Notifications</h1>
+            <div class="subtitle">Stay updated on bookings, payments, and shipments</div>
+          </div>
         </div>
-        <span style="font-size:13px; color:var(--text-dim);">Click a notification to mark it as read</span>
       </div>
-      <div id="notificationList" class="notification-list"></div>
-    </div>
-  </main>
 
-  <div id="app-footer"></div>
+      <div class="card">
 
-  
-  
-  
-  
-  
-  
+        <div class="notif-header-row">
+          <div class="bell-row">
+            <div class="bell-icon-wrap">
+              <span id="bellIcon"></span>
+              <span id="badge" class="badge" style="display:none;">0</span>
+            </div>
+            <span class="bell-row-text">Click a notification to mark it as read</span>
+          </div>
+
+          <div class="notif-actions">
+            <button class="btn btn-ghost" id="markAllReadBtn"></button>
+            <button class="btn btn-outline" id="refreshBtn"></button>
+          </div>
+        </div>
+
+        <div id="notificationList" class="notification-list"></div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <div id="logout-modal-root"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/logout-modal.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/notifications.js"></script>
+
 
 </body></html>
