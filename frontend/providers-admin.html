@@ -1,68 +1,114 @@
 <html lang="en"><head>
   <meta charset="UTF-8">
-  <title>Provider Approvals - CargoVerse AI Lite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Provider Approvals — CargoVerse Lite</title>
+  <meta name="description" content="Review, inspect, and score provider applications.">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="css/providers-admin.css">
 </head>
 <body>
-  <div id="app-header"></div>
 
-  <main class="page-content">
-    <div class="dashboard-header fade-up">
-      <div>
-        <h1 style="font-size:26px; color:var(--cyber-cyan);">Provider Approvals</h1>
-        <div class="subtitle" style="font-size:13px; color:var(--text-dim); margin-top:4px;">Review and score provider applications</div>
+  <div class="app-shell">
+    <div id="sidebar-root"></div>
+
+    <main class="app-main page-fade">
+
+      <div class="dashboard-header">
+        <div class="dashboard-greeting">
+          <div>
+            <h1>Provider Approvals</h1>
+            <div class="subtitle">Review and score provider applications</div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="provider-tabs fade-up">
-      <div class="provider-tab active" data-tab="pending">Pending</div>
-      <div class="provider-tab" data-tab="inspection_scheduled">Inspection Scheduled</div>
-      <div class="provider-tab" data-tab="approved">Approved</div>
-      <div class="provider-tab" data-tab="rejected">Rejected</div>
-      <div class="provider-tab" data-tab="all">All</div>
-    </div>
+      <!-- ===== Status Tabs ===== -->
+      <div class="provider-tabs">
+        <div class="provider-tab active" data-tab="pending">
+          Pending <span class="tab-count" id="count-pending">0</span>
+        </div>
+        <div class="provider-tab" data-tab="inspection_scheduled">
+          Inspection Scheduled <span class="tab-count" id="count-inspection_scheduled">0</span>
+        </div>
+        <div class="provider-tab" data-tab="approved">
+          Approved <span class="tab-count" id="count-approved">0</span>
+        </div>
+        <div class="provider-tab" data-tab="rejected">
+          Rejected <span class="tab-count" id="count-rejected">0</span>
+        </div>
+        <div class="provider-tab" data-tab="all">
+          All <span class="tab-count" id="count-all">0</span>
+        </div>
+      </div>
 
-    <div class="glass-card fade-up">
-      <div id="providersList"></div>
-    </div>
-  </main>
+      <!-- ===== Providers List ===== -->
+      <div class="card">
+        <div id="providersList"></div>
+      </div>
 
-  <div id="app-footer"></div>
+    </main>
+  </div>
 
+  <div id="logout-modal-root"></div>
+
+  <!-- ===== Score Submission Modal ===== -->
   <div id="scoreModalOverlay" class="score-modal-overlay">
     <div class="score-modal">
-      <h3>Submit Inspection Score</h3>
+      <h3><span id="scoreModalIcon"></span> Submit Inspection Score</h3>
+      <div class="modal-subtitle">Adjust each category based on the on-site inspection results.</div>
 
       <div class="score-field">
-        <label><span>Documents (30%)</span><span id="docScoreVal">70</span></label>
+        <label>
+          <span><span id="docScoreIcon" class="score-field-icon"></span>Documents (30%)</span>
+          <span class="score-value-tag" id="docScoreVal">70</span>
+        </label>
         <input type="range" id="docScore" min="0" max="100" value="70">
       </div>
+
       <div class="score-field">
-        <label><span>Infrastructure (30%)</span><span id="infraScoreVal">70</span></label>
+        <label>
+          <span><span id="infraScoreIcon" class="score-field-icon"></span>Infrastructure (30%)</span>
+          <span class="score-value-tag" id="infraScoreVal">70</span>
+        </label>
         <input type="range" id="infraScore" min="0" max="100" value="70">
       </div>
+
       <div class="score-field">
-        <label><span>Compliance (20%)</span><span id="complianceScoreVal">70</span></label>
+        <label>
+          <span><span id="complianceScoreIcon" class="score-field-icon"></span>Compliance (20%)</span>
+          <span class="score-value-tag" id="complianceScoreVal">70</span>
+        </label>
         <input type="range" id="complianceScore" min="0" max="100" value="70">
       </div>
+
       <div class="score-field">
-        <label><span>Fleet Quality (20%)</span><span id="fleetScoreVal">70</span></label>
+        <label>
+          <span><span id="fleetScoreIcon" class="score-field-icon"></span>Fleet Quality (20%)</span>
+          <span class="score-value-tag" id="fleetScoreVal">70</span>
+        </label>
         <input type="range" id="fleetScore" min="0" max="100" value="70">
+      </div>
+
+      <div class="score-total-preview">
+        <div class="total-label">Weighted Final Score</div>
+        <div class="total-value" id="scoreTotalValue">70 / 100</div>
+        <div class="total-hint" id="scoreTotalHint"></div>
       </div>
 
       <div style="display:flex; gap:10px; margin-top:20px;">
         <button class="btn btn-ghost" id="closeModalBtn" style="flex:1;">Cancel</button>
-        <button class="btn btn-primary" id="submitScoreBtn" style="flex:1;">Submit Score</button>
+        <button class="btn btn-primary" id="submitScoreBtn" style="flex:1;"></button>
       </div>
     </div>
   </div>
 
-  
-  
-  
-  
-  
+  <script src="js/icons.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/logout-modal.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/providers-admin.js"></script>
+
 
 </body></html>
