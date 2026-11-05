@@ -1,0 +1,130 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — CargoVerse Lite</title>
+  <meta name="description" content="Create your CargoVerse Lite account as a Trader, Provider, or Admin and start booking or listing cargo space today.">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+  <div id="header-root"></div>
+
+  <main>
+    <section class="hero" style="padding: 40px 24px 60px; min-height: 70vh; display: flex; align-items: center;">
+      <div id="particles-root"></div>
+
+      <div class="auth-wrap" style="position: relative; z-index: 1; margin: 0 auto;">
+        <div class="auth-card card page-fade">
+
+          <div class="auth-head">
+            <div class="icon-wrap" id="authHeadIcon"></div>
+            <h1>Create your account</h1>
+            <p>Join CargoVerse Lite to book or list cargo space</p>
+          </div>
+
+          <div id="authError" class="auth-error">
+            <span id="authErrorText"></span>
+          </div>
+
+          <form id="registerForm">
+
+            <div class="form-group">
+              <label>I am joining as a...</label>
+              <div class="role-select-grid">
+                <div class="role-option selected" data-role="trader">
+                  <span id="roleTraderIcon"></span>
+                  Trader
+                </div>
+                <div class="role-option" data-role="provider">
+                  <span id="roleProviderIcon"></span>
+                  Provider
+                </div>
+                <div class="role-option" data-role="admin">
+                  <span id="roleAdminIcon"></span>
+                  Admin
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <div class="input-with-icon">
+                <span id="nameIcon"></span>
+                <input type="text" id="fullName" placeholder="Jane Doe" required="" autocomplete="name">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <div class="input-with-icon">
+                <span id="emailIcon"></span>
+                <input type="email" id="email" placeholder="you@company.com" required="" autocomplete="email">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="input-with-icon">
+                <span id="passwordIcon"></span>
+                <input type="password" id="password" placeholder="Minimum 8 characters" required="" autocomplete="new-password">
+                <button type="button" class="password-toggle-btn" id="togglePassword" aria-label="Toggle password visibility"></button>
+              </div>
+              <div class="password-strength">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
+              <span class="password-strength-label" id="strengthLabel"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <div class="input-with-icon">
+                <span id="confirmPasswordIcon"></span>
+                <input type="password" id="confirmPassword" placeholder="Re-enter your password" required="" autocomplete="new-password">
+                <button type="button" class="password-toggle-btn" id="toggleConfirmPassword" aria-label="Toggle password visibility"></button>
+              </div>
+            </div>
+
+            <div class="form-row-check">
+              <label>
+                <input type="checkbox" id="agreeTerms" required="">
+                I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full" id="registerSubmitBtn">
+              <span class="btn-spinner"></span>
+              <span class="btn-label-text">Create Account</span>
+            </button>
+          </form>
+
+          <div class="auth-divider">Already have an account?</div>
+
+          <a href="login.html" class="btn btn-outline btn-full">Log In Instead</a>
+
+        </div>
+
+        <div class="auth-switch" style="margin-top: 20px;">
+          <a href="index.html">← Back to Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-root"></div>
+  <div id="logout-modal-root"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/logout-modal.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/register.js"></script>
+
+
+</body></html>
