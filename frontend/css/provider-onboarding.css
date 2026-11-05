@@ -1,28 +1,190 @@
-.onboard-wrap { max-width: 580px; margin: 0 auto; }
-.onboard-wrap h1 { font-size: 22px; color: var(--cyber-cyan); margin-bottom: 6px; }
-.onboard-wrap .subtitle { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+/* FILE: frontend/css/provider-onboarding.css */
+
+.onboard-wrap {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.onboard-wrap .onboard-head {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.onboard-wrap .onboard-head .icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.onboard-wrap h1 {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+
+.onboard-wrap .subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
 
 .form-grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  gap: 16px;
 }
 
+@media (max-width: 600px) {
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-grid-2 .form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+/* ===== Pending / Status View ===== */
 .pending-view {
   text-align: center;
-  padding: 20px 0;
+  padding: 10px 0;
 }
-.pending-icon { font-size: 48px; margin-bottom: 14px; }
+
+.pending-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  animation: floatY 3s ease-in-out infinite;
+}
+
+.pending-company-name {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+}
+
 .pending-status-badge {
-  display: inline-block;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 18px;
+  border-radius: 999px;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  margin: 10px 0 20px;
+  margin: 10px 0 24px;
 }
-.pending-status-badge.pending { background: rgba(255,196,0,0.15); color: #ffd84d; border: 1px solid #ffc400; }
-.pending-status-badge.inspection_scheduled { background: rgba(0,217,255,0.15); color: var(--neon-blue); border: 1px solid var(--neon-blue); }
-.pending-status-badge.approved { background: rgba(60,255,176,0.15); color: #3cffb0; border: 1px solid #3cffb0; }
-.pending-status-badge.rejected { background: rgba(255,60,60,0.15); color: #ff8080; border: 1px solid #ff5c5c; }
+
+.pending-status-badge.pending {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--warning);
+}
+.pending-status-badge.inspection_scheduled {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--primary);
+}
+.pending-status-badge.approved {
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--success);
+}
+.pending-status-badge.rejected {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--danger);
+}
+
+/* ===== Approval Status Timeline ===== */
+.status-timeline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 28px 0 32px;
+  text-align: left;
+}
+
+.timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.timeline-step .timeline-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 2px solid var(--border);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  transition: var(--transition);
+  z-index: 1;
+}
+
+.timeline-step .timeline-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-align: center;
+}
+
+.timeline-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  z-index: 0;
+}
+
+.timeline-step.done .timeline-circle {
+  background: var(--success);
+  border-color: var(--success);
+  color: #fff;
+}
+.timeline-step.done .timeline-label {
+  color: var(--success);
+}
+.timeline-step.done:not(:last-child)::after {
+  background: var(--success);
+}
+
+.timeline-step.current .timeline-circle {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+.timeline-step.current .timeline-label {
+  color: var(--primary);
+}
+
+.timeline-step.rejected .timeline-circle {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+}
+.timeline-step.rejected .timeline-label {
+  color: var(--danger);
+}
+
+.pending-message {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
