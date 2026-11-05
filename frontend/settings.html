@@ -1,0 +1,155 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings — CargoVerse Lite</title>
+  <meta name="description" content="Manage your notification preferences, password, and account settings.">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+
+  <div class="app-shell">
+    <div id="sidebar-root"></div>
+
+    <main class="app-main page-fade">
+
+      <div class="dashboard-header">
+        <div class="dashboard-greeting">
+          <div>
+            <h1>Settings</h1>
+            <div class="subtitle">Manage your preferences and account security</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Notification Preferences ===== -->
+      <div class="card settings-section">
+        <div class="settings-section-head">
+          <div class="icon-wrap" id="sectionNotifIcon"></div>
+          <div>
+            <h3>Notification Preferences</h3>
+            <p>Choose what you want to be notified about</p>
+          </div>
+        </div>
+
+        <div class="toggle-row">
+          <div class="toggle-row-info">
+            <div class="toggle-title">Booking Updates</div>
+            <div class="toggle-desc">Get notified when a booking status changes</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" class="notif-toggle" data-pref-key="bookingUpdates">
+            <span class="switch-track"></span>
+          </label>
+        </div>
+
+        <div class="toggle-row">
+          <div class="toggle-row-info">
+            <div class="toggle-title">Payment Alerts</div>
+            <div class="toggle-desc">Receive confirmations for payments and refunds</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" class="notif-toggle" data-pref-key="paymentAlerts">
+            <span class="switch-track"></span>
+          </label>
+        </div>
+
+        <div class="toggle-row">
+          <div class="toggle-row-info">
+            <div class="toggle-title">Chat Messages</div>
+            <div class="toggle-desc">Get notified about new messages from trading partners</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" class="notif-toggle" data-pref-key="chatMessages">
+            <span class="switch-track"></span>
+          </label>
+        </div>
+
+        <div class="toggle-row">
+          <div class="toggle-row-info">
+            <div class="toggle-title">Marketing Emails</div>
+            <div class="toggle-desc">Occasional product updates and promotions</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" class="notif-toggle" data-pref-key="marketingEmails">
+            <span class="switch-track"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- ===== Change Password ===== -->
+      <div class="card settings-section">
+        <div class="settings-section-head">
+          <div class="icon-wrap" id="sectionPasswordIcon"></div>
+          <div>
+            <h3>Change Password</h3>
+            <p>Update your account password</p>
+          </div>
+        </div>
+
+        <div id="passwordError" class="auth-error"></div>
+
+        <form id="changePasswordForm" class="password-form-grid">
+          <div class="form-group">
+            <label>Current Password</label>
+            <div class="input-with-icon">
+              <span id="currentPasswordIcon"></span>
+              <input type="password" id="currentPasswordInput" required="" autocomplete="current-password">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>New Password</label>
+            <div class="input-with-icon">
+              <span id="newPasswordIcon"></span>
+              <input type="password" id="newPasswordInput" required="" autocomplete="new-password">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Confirm New Password</label>
+            <div class="input-with-icon">
+              <span id="confirmNewPasswordIcon"></span>
+              <input type="password" id="confirmNewPasswordInput" required="" autocomplete="new-password">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="updatePasswordBtn" style="width:fit-content;"></button>
+        </form>
+      </div>
+
+      <!-- ===== Danger Zone ===== -->
+      <div class="card settings-section danger-zone-card">
+        <div class="settings-section-head">
+          <div class="icon-wrap" id="sectionDangerIcon"></div>
+          <div>
+            <h3>Danger Zone</h3>
+            <p>Irreversible account actions</p>
+          </div>
+        </div>
+
+        <div class="danger-row">
+          <div class="danger-row-info">
+            <div class="danger-title">Deactivate Account</div>
+            <div class="danger-desc">Temporarily disable your account. You can contact support to reactivate it later.</div>
+          </div>
+          <button class="btn btn-danger" id="deactivateAccountBtn"></button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <div id="logout-modal-root"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/logout-modal.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/settings.js"></script>
+
+
+</body></html>
