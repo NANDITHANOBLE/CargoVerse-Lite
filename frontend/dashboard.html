@@ -1,0 +1,69 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — CargoVerse Lite</title>
+  <meta name="description" content="Your CargoVerse Lite dashboard — bookings, analytics, and quick actions in one place.">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="app-shell">
+    <div id="sidebar-root"></div>
+
+    <main class="app-main page-fade">
+
+      <!-- ===== Header Row: Greeting + Quick Icons ===== -->
+      <div class="dashboard-header">
+        <div class="dashboard-greeting">
+          <div class="avatar-circle" id="avatarInitials">--</div>
+          <div>
+            <h1 id="greetingTitle">Welcome back</h1>
+            <div class="subtitle" id="greetingSubtitle"></div>
+          </div>
+        </div>
+
+        <div class="dashboard-header-actions">
+          <button class="icon-btn" id="notifBtn" aria-label="Notifications">
+            <span id="notifIcon"></span>
+            <span class="icon-badge" id="notifBadge" style="display:none;">0</span>
+          </button>
+          <button class="icon-btn" id="chatBtn" aria-label="Messages">
+            <span id="chatIcon"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== Stat Cards ===== -->
+      <div class="stats-grid" id="statsGrid"></div>
+
+      <!-- ===== Quick Actions ===== -->
+      <div class="section-row">
+        <h2>Quick Actions</h2>
+      </div>
+      <div class="quick-actions-grid" id="quickActionsGrid"></div>
+
+      <!-- ===== Recent Activity ===== -->
+      <div class="section-row">
+        <h2>Recent Activity</h2>
+        <a href="notifications.html">
+          View all
+        </a>
+      </div>
+      <div class="card">
+        <div class="activity-list" id="activityList"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <div id="logout-modal-root"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/logout-modal.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/dashboard.js"></script>
+
+
+</body></html>
