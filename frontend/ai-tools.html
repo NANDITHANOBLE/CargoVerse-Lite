@@ -1,57 +1,150 @@
 <html lang="en"><head>
   <meta charset="UTF-8">
-  <title>AI Tools - CargoVerse AI Lite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Tools — CargoVerse Lite</title>
+  <meta name="description" content="Smarter shipping decisions, powered by AI — container recommendations, pricing forecasts, and route optimization.">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/dashboard.css">
-  <link rel="stylesheet" href="css/providers-admin.css">
+  <link rel="stylesheet" href="css/ai-tools.css">
 </head>
 <body>
-  <div id="app-header"></div>
 
-  <main class="page-content">
-    <div class="dashboard-header fade-up">
-      <div>
-        <h1 style="font-size:26px; color:var(--cyber-cyan);">AI Tools</h1>
-        <div class="subtitle" style="font-size:13px; color:var(--text-dim); margin-top:4px;">Smarter decisions, powered by AI</div>
+  <div class="app-shell">
+    <div id="sidebar-root"></div>
+
+    <main class="app-main page-fade">
+
+      <div class="dashboard-header">
+        <div class="dashboard-greeting">
+          <div>
+            <h1>AI Tools</h1>
+            <div class="subtitle">Smarter decisions, powered by AI</div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="provider-tabs fade-up">
-      <div class="provider-tab active" data-tool="recommend">Container Recommendation</div>
-      <div class="provider-tab" data-tool="pricing">Pricing Forecast</div>
-      <div class="provider-tab" data-tool="route">Route Optimizer</div>
-    </div>
+      <!-- ===== Tool Tabs ===== -->
+      <div class="ai-tool-tabs">
+        <div class="ai-tool-tab active" data-panel="recommendPanel" data-icon="sparkle" data-label="Container Recommendation"></div>
+        <div class="ai-tool-tab" data-panel="pricingPanel" data-icon="chart" data-label="Pricing Forecast"></div>
+        <div class="ai-tool-tab" data-panel="routePanel" data-icon="mapPin" data-label="Route Optimizer"></div>
+      </div>
 
-    <iframe id="toolFrame" src="ai-recommend-test.html" style="width:100%; min-height:700px; border:none; border-radius:16px;"></iframe>
-  </main>
+      <!-- ===== PANEL 1: Container Recommendation ===== -->
+      <div id="recommendPanel" class="ai-tool-panel active card">
+        <div class="ai-panel-head">
+          <div class="icon-wrap" id="recommendPanelIcon"></div>
+          <div>
+            <h2>AI Container Recommendation</h2>
+            <p>Compare candidate containers against your current choice to find the best value.</p>
+          </div>
+        </div>
 
-  <div id="app-footer"></div>
+        <div class="form-group">
+          <label style="display:block; font-size:0.8rem; font-weight:600; margin-bottom:8px;">
+            Your Current Choice (Container ID)
+          </label>
+          <input type="text" id="currentChoiceId" placeholder="e.g. CNT001" style="width:100%; padding:11px 14px; border:1px solid var(--border); border-radius:var(--radius); margin-bottom:20px;">
+        </div>
 
-  
-  
-  
-  
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      if (!AuthState.requireAuth(["trader"])) return;
-      renderParticles();
-      renderHeader("ai-tools.html");
-      renderFooter();
+        <div id="candidatesContainer">
+          <div class="candidate-card">
+            <div class="candidate-card-title">
+              <span class="badge-current">Current Choice</span> Candidate 1
+            </div>
+            <div class="candidate-fields-grid">
+              <input class="c-id" placeholder="Container ID" value="CNT001">
+              <input class="c-price" type="number" placeholder="Price/CBM" value="6500">
+              <input class="c-days" type="number" placeholder="Transit Days" value="5">
+              <input class="c-trust" type="number" placeholder="Trust Score (0-10)" value="7">
+              <input class="c-space" type="number" placeholder="Available CBM" value="10">
+            </div>
+          </div>
+        </div>
 
-      const frames = {
-        recommend: "ai-recommend-test.html",
-        pricing: "pricing-test.html",
-        route: "route-optimizer-test.html",
-      };
+        <button type="button" class="add-candidate-btn" id="addCandidateBtn" style="margin-bottom:20px;"></button>
 
-      document.querySelectorAll(".provider-tab").forEach((tab) => {
-        tab.addEventListener("click", () => {
-          document.querySelectorAll(".provider-tab").forEach((t) => t.classList.remove("active"));
-          tab.classList.add("active");
-          document.getElementById("toolFrame").src = frames[tab.dataset.tool];
-        });
-      });
-    });
-  </script>
+        <button type="button" class="btn btn-primary btn-full" id="getRecommendBtn"></button>
+
+        <div id="recommendResultCard" class="ai-result-card"></div>
+      </div>
+
+      <!-- ===== PANEL 2: Pricing Forecast ===== -->
+      <div id="pricingPanel" class="ai-tool-panel card">
+        <div class="ai-panel-head">
+          <div class="icon-wrap" id="pricingPanelIcon"></div>
+          <div>
+            <h2>Dynamic Pricing Forecast</h2>
+            <p>Predict price trends based on demand, season, and route conditions.</p>
+          </div>
+        </div>
+
+        <div class="form-grid-2" style="margin-bottom:20px;">
+          <div class="form-group">
+            <label style="display:block; font-size:0.8rem; font-weight:600; margin-bottom:6px;">Demand Index (0-100)</label>
+            <input type="number" id="demandIndex" value="75" style="width:100%; padding:11px 14px; border:1px solid var(--border); border-radius:var(--radius);">
+          </div>
+          <div class="form-group">
+            <label style="display:block; font-size:0.8rem; font-weight:600; margin-bottom:6px;">Season Factor (0-1)</label>
+            <input type="number" id="seasonFactor" step="0.1" value="0.8" style="width:100%; padding:11px 14px; border:1px solid var(--border); border-radius:var(--radius);">
+          </div>
+          <div class="form-group">
+            <label style="display:block; font-size:0.8rem; font-weight:600; margin-bottom:6px;">Distance (km)</label>
+            <input type="number" id="pricingDistanceKm" value="3000" style="width:100%; padding:11px 14px; border:1px solid var(--border); border-radius:var(--radius);">
+          </div>
+          <div class="form-group">
+            <label style="display:block; font-size:0.8rem; font-weight:600; margin-bottom:6px;">Days to Departure</label>
+            <input type="number" id="daysToDeparture" value="5" style="width:100%; padding:11px 14px; border:1px solid var(--border); border-radius:var(--radius);">
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-full" id="getForecastBtn"></button>
+
+        <div id="pricingResultCard" class="ai-result-card"></div>
+      </div>
+
+      <!-- ===== PANEL 3: Route Optimizer ===== -->
+      <div id="routePanel" class="ai-tool-panel card">
+        <div class="ai-panel-head">
+          <div class="icon-wrap" id="routePanelIcon"></div>
+          <div>
+            <h2>Route Optimization</h2>
+            <p>Compare transport modes to find the most cost-effective and fastest route.</p>
+          </div>
+        </div>
+
+        <div class="form-grid-2" style="margin-bottom:20px;">
+          <div class="form-group">
+            <label style="display:block; font-size:0.8rem; font-weight:600; margin-bottom:6px;">Distance (km)</label>
+            <input type="number" id="routeDistanceKm" value="3000" style="width:100%; padding:11px 14px; border:1px solid var(--border); border-radius:var(--radius);">
+          </div>
+          <div class="form-group">
+            <label style="display:block; font-size:0.8rem; font-weight:600; margin-bottom:6px;">Current Mode</label>
+            <select id="currentMode" style="width:100%; padding:11px 14px; border:1px solid var(--border); border-radius:var(--radius); background:var(--card);">
+              <option value="road">Road</option>
+              <option value="sea" selected="">Sea</option>
+              <option value="rail">Rail</option>
+              <option value="air">Air</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-full" id="optimizeRouteBtn"></button>
+
+        <div id="routeResultCard" class="ai-result-card"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <div id="logout-modal-root"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/logout-modal.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/ai-tools.js"></script>
+
 
 </body></html>

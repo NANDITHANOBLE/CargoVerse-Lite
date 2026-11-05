@@ -1,34 +1,51 @@
 <html lang="en"><head>
   <meta charset="UTF-8">
-  <title>Analytics - CargoVerse AI Lite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics — CargoVerse Lite</title>
+  <meta name="description" content="Your performance at a glance — revenue, bookings, and key insights.">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/dashboard.css">
-  <link rel="stylesheet" href="css/analytics-test.css">
+  <link rel="stylesheet" href="css/analytics.css">
 </head>
 <body>
-  <div id="app-header"></div>
 
-  <main class="page-content">
-    <div class="dashboard-header fade-up">
-      <div>
-        <h1 style="font-size:26px; color:var(--cyber-cyan);">Analytics</h1>
-        <div class="subtitle" style="font-size:13px; color:var(--text-dim); margin-top:4px;">Your performance at a glance</div>
+  <div class="app-shell">
+    <div id="sidebar-root"></div>
+
+    <main class="app-main page-fade">
+
+      <div class="dashboard-header">
+        <div class="dashboard-greeting">
+          <div>
+            <h1>Analytics</h1>
+            <div class="subtitle">Your performance at a glance</div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="glass-card fade-up">
-      <div id="statsGrid" class="stats-grid"></div>
-      <div id="log"></div>
-    </div>
-  </main>
+      <!-- ===== Stat Cards ===== -->
+      <div class="analytics-stats-grid" id="statsGrid"></div>
 
-  <div id="app-footer"></div>
+      <!-- ===== Bar Chart ===== -->
+      <div class="card chart-card" id="chartCard"></div>
 
-  
-  
-  
-  
-  
-  
+      <!-- ===== Insights ===== -->
+      <div class="section-row">
+        <h2>Insights</h2>
+      </div>
+      <div class="insight-row" id="insightRow"></div>
+
+    </main>
+  </div>
+
+  <div id="logout-modal-root"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/logout-modal.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/analytics.js"></script>
+
 
 </body></html>
