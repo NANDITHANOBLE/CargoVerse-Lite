@@ -1,0 +1,109 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile — CargoVerse Lite</title>
+  <meta name="description" content="View and edit your CargoVerse Lite profile details.">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+  <div class="app-shell">
+    <div id="sidebar-root"></div>
+
+    <main class="app-main page-fade">
+
+      <div class="dashboard-header">
+        <div class="dashboard-greeting">
+          <div>
+            <h1>My Profile</h1>
+            <div class="subtitle">View and manage your account details</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-layout">
+
+        <!-- ===== Left: Profile Summary ===== -->
+        <div class="card profile-summary-card">
+          <div class="profile-avatar-wrap">
+            <div class="profile-avatar-circle" id="avatarInitials">--</div>
+            <button class="profile-avatar-edit-btn" id="avatarEditBtn" aria-label="Edit avatar">
+              <span id="avatarEditIcon"></span>
+            </button>
+          </div>
+
+          <div class="profile-summary-name" id="profileSummaryName">Loading...</div>
+          <div class="profile-summary-email" id="profileSummaryEmail"></div>
+          <div class="profile-role-badge" id="profileRoleBadge"></div>
+
+          <div class="profile-meta-list">
+            <div class="profile-meta-item">
+              <span id="metaJoinedIcon"></span>
+              Joined <strong id="metaJoined">-</strong>
+            </div>
+            <div class="profile-meta-item">
+              <span id="metaRoleIcon"></span>
+              Account type: <strong id="metaRole">-</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Right: Editable Details ===== -->
+        <div class="card profile-details-card">
+          <div class="section-card-title" id="sectionDetailsIcon">
+            <span id="sectionDetailsIconInner"></span> Personal Details
+          </div>
+
+          <form id="profileForm">
+            <div class="profile-form-grid">
+              <div class="form-group">
+                <label>Full Name</label>
+                <div class="input-with-icon">
+                  <span id="fullNameIcon"></span>
+                  <input type="text" id="fullNameInput" required="">
+                </div>
+              </div>
+
+              <div class="form-group profile-field-readonly">
+                <label>Email Address</label>
+                <div class="input-with-icon">
+                  <span id="emailFieldIcon"></span>
+                  <input type="email" id="emailInput" disabled="">
+                </div>
+              </div>
+            </div>
+
+            <div class="profile-form-actions">
+              <button type="button" class="btn btn-ghost" id="cancelEditBtn">Cancel</button>
+              <button type="submit" class="btn btn-primary" id="saveProfileBtn"></button>
+            </div>
+          </form>
+
+          <!-- ===== Provider-specific Info (shown only if role === provider) ===== -->
+          <div class="provider-info-block" id="providerInfoBlock" style="display:none;">
+            <div class="section-card-title">
+              <span id="sectionProviderIcon"></span> Provider Information
+            </div>
+            <div class="provider-info-grid" id="providerInfoGrid"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <div id="logout-modal-root"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/logout-modal.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/profile.js"></script>
+
+
+</body></html>
